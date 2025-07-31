@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto Condensed', sans-serif;
+      background: #000;
+      color: white;
+    }
+
+    .navbar {
+      position: absolute;
+      top: 31px;
+      left: 28.9px;
+      right: 28.9px;
+      height: 91px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      background-color: #000;
+      padding: 0 20px;
+    }
+
+    .logo a {
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #F56F08, #1738DA);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      padding: 8px 12px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #F56F08;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1024px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 91px;
+        right: 0;
+        background-color: #000;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .navbar {
+        flex-wrap: wrap;
+      }
+    }
+
+    .banner-container {
+      position: relative;
+      width: 100%;
+      max-width: 1514px;
+      height: 737px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .banner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .banner-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+    }
+
+    .banner-content p {
+      font-size: 24px;
+      margin-block: 10px;
+    }
+
+    .banner-content h2 {
+      font-size: 98px;
+      font-weight: 900;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #ffffff, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .container {
+      max-width: calc(100% - 128px); /* 64px left + 64px right */
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    .grid-column-12 {
+      grid-column: span 12;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+      background: linear-gradient(to right, #F56F08 20%, #1738DA 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 50px;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 24px;
+      color: white;
+      margin-top: -10px;
+      margin-bottom: 50px;
+    }
+
+    .heading4 {
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(45deg, #F56F08 40%, #1738DA 60%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 10px;
+    }
+
+    .subheading4 {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 400;
+      color: white;
+      margin-top: 20px;
+      line-height: 1.4;
+    }
+
+    .slider-wrapper4 {
+      overflow: hidden;
+      margin-top: 40px;
+    }
+
+    .slider4 {
+      display: flex;
+      gap: 32px;
+      transition: transform 1s ease-in-out;
+    }
+
+    .box4 {
+      position: relative;
+      width: 448px;
+      height: 588px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .box4 img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .overlay4 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 214.5px solid transparent;
+      border-bottom: 202px solid #F56F08;
+      transform: scaleX(-1);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .textbox14,
+    .textbox24 {
+      position: absolute;
+      margin-left: 20px;
+      background-color: black;
+      color: white;
+      font-size: 24px;
+      font-weight: 400;
+      font-family: Roboto, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .textbox14 {
+      width: 264px;
+      height: 51px;
+      bottom: 100px;
+      left: 0;
+    }
+
+    .textbox24 {
+      width: 159px;
+      height: 51px;
+      bottom: 40px;
+      left: 0;
+    }
+
+    .box4:hover .overlay4,
+    .box4:hover .textbox14,
+    .box4:hover .textbox24 {
+      opacity: 1;
+    }
+
+    .pagination4 {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .dot4 {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .dot4.active {
+      background-color: #F56F08;
+    }
+    .gridp {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 40px;
+      color: white;
+      margin-top: 50px;
+      padding:64px;
+    }
+
+    .columnp {
+      grid-column: span 4;
+    }
+
+    .titlep {
+      font-size: 32px;
+      font-weight: 600;
+      background: linear-gradient(to right, #F56F08, #1738DA 70%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 24px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    
+    }
+
+    li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 30px;
+      font-size: 24px;
+      font-weight:normal;
+      color: white;
+    }
+
+    li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #F56F08, #1738DA);
+    }
+
+    @media (max-width: 900px) {
+      .column {
+        grid-column: span 12;
+      }
+    }
+    .circlewrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 150px;
+      margin-top: 90px;
+      flex-wrap: wrap;
+    }
+
+    @keyframes popup {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.15);
+      }
+    }
+
+    .circleblock {
+      text-align: center;
+      position: relative;
+      width: 307px;
+      height: 307px;
+    }
+
+    .bigcircle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 307px;
+      height: 307px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, rgba(245,111,8,0.3), rgba(23,56,218,0.3));
+      animation: popup 2.5s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .midcircle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 253px;
+      height: 253px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, rgba(245,111,8,0.4), rgba(23,56,218,0.4));
+      animation: popup 2.5s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    .smallcircle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 199px;
+      height: 199px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, rgba(245,111,8,0.8), rgba(23,56,218,0.8));
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 3;
+    }
+
+    .iconimage1, .iconimage2 {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+    }
+
+    .iconimage1 {
+      top: 50%;
+      width: 114px;
+      height: 114px;
+    }
+
+    .iconimage2 {
+      top: 45%;
+      width: 141px;
+      height: 141px;
+    }
+
+    .circletext {
+      margin-top: 330px;
+    }
+
+    .highlight3 {
+      font-size: 48px;
+      font-weight: 700;
+      background: linear-gradient(360deg, #F56F08 10%, #1738DA 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtext3 {
+      font-size: 32px;
+      color: white;
+      line-height: 1.3;
+      font-weight: 400;
+    }
+    .container5 {
+    
+      max-width: calc(100% - 128px); /* 64px left + 64px right */
+      margin: 0 auto;
+      padding: 60px 0;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+      margin-top: 250px ;
+    }
+
+    .left {
+      grid-column: span 6;
+      margin-left: 50px;
+    }
+
+    .right {
+      grid-column: span 6;
+      display: flex;
+      justify-content: center;
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #F56F08 , #1738DA 60%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 20px;
+      font-size: 24px;
+      line-height: 1.5;
+      
+    }
+
+    li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #F56F08, #1738DA);
+    }
+
+    .service-image {
+      width: 672px;
+      height: 655px;
+      object-fit: cover;
+    }
+
+    @media (max-width: 1000px) {
+      .left, .right {
+        grid-column: span 12;
+      }
+      .right {
+        margin-top: 40px;
+      }
+      .service-image {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .footer {
+    width: 1514px;
+    height: 453px;
+    display: flex;
+    padding: 50px;
+    background-color: #191919;
+    box-sizing: border-box;
+    gap: 50px;
+  }
+
+  .footer-section.about {
+    width: 28%;
+    margin-top: 50px;
+  }
+
+  .footer-section.grouped {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+  }
+
+  .footer-section h2 {
+    font-size: 32px;
+    font-weight: 500;
+    background: linear-gradient(to right, #F56F08, #1738DA 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .footer-section p,
+  .footer-section li,
+  .footer-section span {
+    font-size: 20px;
+    font-weight: 400;
+    color: white;
+    margin: 10px 0;
+  }
+
+  .footer-section h3 {
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .gradient-line {
+    width: 214px;
+    height: 2px;
+    background: linear-gradient(to right, #F56F08, #1738DA);
+    margin-bottom: 15px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .contact-item img {
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+  }
+
+  .gallery img {
+    margin: 3px;
+  }
+
+  .gallery-row {
+    display: flex;
+    gap: 14px;
+  }
+
+  .copyright {
+    width: 1528px;
+    height: 61px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    box-sizing: border-box;
+  }
+
+  .gradient-text {
+    background: #636161;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 20px;
+    font-weight: normal;
+  }
+
+  .copyright a {
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: normal;
+    background: #636161;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .footer {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      height: auto;
+      padding: 40px 30px;
+      gap: 40px;
+    }
+
+    .footer-section.about {
+      width: 100%;
+      margin-top: 0;
+    }
+
+    .footer-section.grouped {
+      flex-direction: column;
+      width: 100%;
+      margin-top: 0;
+      gap: 40px;
+    }
+
+    .footer-section {
+      width: 100%;
+    }
+
+    .footer-section h2,
+    .footer-section h3 {
+      text-align: left;
+    }
+
+    .gallery-row {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .copyright {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      height: auto;
+      padding: 20px;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .copyright a {
+      margin: 0 10px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .footer {
+      padding: 30px 20px;
+    }
+
+    .footer-section h2 {
+      font-size: 26px;
+    }
+
+    .footer-section h3 {
+      font-size: 20px;
+    }
+
+    .footer-section p,
+    .footer-section span {
+      font-size: 16px;
+    }
+
+    .contact-item img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .gradient-line {
+      width: 150px;
+    }
+
+    .gallery-row img {
+      width: 100px;
+      height: auto;
+    }
+
+    .copyright {
+      font-size: 14px;
+    }
+
+    .copyright a {
+      font-size: 14px;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">
+      <a href="index.html">Shivam Electricians</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="aboutus.html">About us</a>
+      <a href="services.html">Services</a>
+      <a class="active" href="projects.html">Projects</a>
+      <a href="team.html">Team</a>
+      <a href="bookavisit.html">Book a Visit</a>
+    </div>
+  </div>
+
+  <div class="banner-container">
+    <img src="project banner.png" class="banner-image" alt="Banner" />
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+      <h2>Projects</h2>
+      <p>Our projects showcase our expertise in delivering high-quality<br />
+        electrical work for homes, offices, shops, and industrial spaces with<br />
+        a focus on safety.
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="grid-column-12 title">Project Showcase – Powering Solutions with Expertise</div>
+    <div class="grid-column-12 subtitle">
+      At Shivam electricians, we take pride in delivering safe, efficient, and high-quality electrical<br />
+      solutions tailored to your needs. From residential wiring to commercial installations and industrial<br />
+      maintenance, our completed projects reflect our dedication to excellence and innovation.
+    </div>
+
+    <div class="grid-column-12">
+      <div class="heading4">OUR WORK</div>
+      <div class="subheading4">
+        From bright homes to powerful businesses, our projects spark reliability and trust.<br />
+        Explore the work that keeps our clients connected, safe, and satisfied.
+      </div>
+
+      <div class="slider-wrapper4">
+        <div class="slider4" id="slider4">
+          <!-- Each box represents a project -->
+          <div class="box4"><img src="project1.png" alt="1"/><div class="overlay4"></div><div class="textbox14">Modern Pattern Style</div><div class="textbox24">Repair</div></div>
+          <div class="box4"><img src="project2.png" alt="2"/><div class="overlay4"></div><div class="textbox14">Elegant Setup</div><div class="textbox24">Install</div></div>
+          <div class="box4"><img src="project3.png" alt="3"/><div class="overlay4"></div><div class="textbox14">Smart Design</div><div class="textbox24">Upgrade</div></div>
+          <div class="box4"><img src="project4.png" alt="4"/><div class="overlay4"></div><div class="textbox14">New Age Look</div><div class="textbox24">Fix</div></div>
+          <div class="box4"><img src="project5.png" alt="5"/><div class="overlay4"></div><div class="textbox14">Lighting Style</div><div class="textbox24">Maintain</div></div>
+          <div class="box4"><img src="project6.png" alt="6"/><div class="overlay4"></div><div class="textbox14">Bright Build</div><div class="textbox24">Check</div></div>
+          <div class="box4"><img src="project7.png" alt="7" style="object-fit: fill;"><div class="overlay4"></div><div class="textbox14">Fixes Short Circuit</div><div class="textbox24">Repair</div></div>
+        </div>
+      </div>
+
+      <div class="pagination4">
+        <div class="dot4 active"></div>
+        <div class="dot4"></div>
+        <div class="dot4"></div>
+      </div>
+    </div>
+  </div>
+<div class="gridp">
+    <!-- Residential Projects -->
+    <div class="columnp">
+      <div class="titlep">Residential Projects</div>
+      <ul>
+        <li>Home Rewiring & Upgrades – Modernized outdated systems for energy efficiency and safety.</li>
+        <li>Smart Home Integration – Installed smart lighting, thermostats, and security systems.</li>
+        <li>EV Charger Installation – Delivered reliable EV home charging setups.</li>
+      </ul>
+    </div>
+
+    <!-- Commercial Projects -->
+    <div class="columnp">
+      <div class="titlep">Commercial Projects</div>
+      <ul>
+        <li>Retail Store Lighting – Designed and installed energy-efficient lighting for improved ambiance.</li>
+        <li>Office Electrical Fit-Outs – Full-service electrical setups for startups and established businesses.</li>
+        <li>Surge Protection & Backup Systems – Ensured business continuity with backup power solutions.</li>
+      </ul>
+    </div>
+
+    <!-- Industrial Projects -->
+    <div class="columnp">
+      <div class="titlep">Industrial Projects</div>
+      <ul>
+        <li>Factory Power Distribution – Installed heavy-duty panels and load-balancing systems.</li>
+        <li>Machine Wiring & Maintenance – Delivered robust electrical support for manufacturing units.</li>
+        <li>Energy Audits & Optimization – Helped reduce costs through smart energy solutions.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="circlewrapper">
+    <!-- Circle Block 1 -->
+    <div class="circleblock">
+      <div class="bigcircle"></div>
+      <div class="midcircle"></div>
+      <div class="smallcircle">
+        <img src="experience 1.png" alt="Experience Icon" class="iconimage1" />
+      </div>
+      <div class="circletext">
+        <div class="highlight3">25+</div>
+        <div class="subtext3">years of<br>Experience</div>
+      </div>
+    </div>
+
+    <!-- Circle Block 2 -->
+    <div class="circleblock">
+      <div class="bigcircle"></div>
+      <div class="midcircle"></div>
+      <div class="smallcircle">
+        <img src="satisfied clients 1.png" alt="Clients Icon" class="iconimage2" />
+      </div>
+      <div class="circletext">
+        <div class="highlight3">90+</div>
+        <div class="subtext3">Satisfied<br>Clients</div>
+      </div>
+    </div>
+
+    <!-- Circle Block 3 -->
+    <div class="circleblock">
+      <div class="bigcircle"></div>
+      <div class="midcircle"></div>
+      <div class="smallcircle">
+        <img src="projects completed 1.png" alt="Projects Icon" class="iconimage2" />
+      </div>
+      <div class="circletext">
+        <div class="highlight3">11k</div>
+        <div class="subtext3">Project<br>Completed</div>
+      </div>
+    </div>
+  </div>
+  <div class="container5">
+  <div class="left">
+      <div class="section-title">Each project includes:</div>
+      <ul>
+        <li>Client Requirements</li>
+        <li>Planning & Design</li>
+        <li>Execution with Safety Standards</li>
+        <li>Testing & Final Review</li>
+        <li>Post-Installation Support</li>
+      </ul>
+    </div>
+
+    <div class="right">
+      <img class="service-image" src="project img.png" alt="Electrical Service">
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <!-- About Us -->
+  <div class="footer-section about">
+    <h2>ABOUT US</h2>
+    <p>We are a team of licensed and experienced electricians dedicated to providing safe, reliable, and high-quality electrical services for residential, commercial, and industrial clients.</p>
+    <p>Work in limited cities and near by villages.</p>
+  </div>
+
+  <!-- Grouped Sections: Explore, Contact, Gallery -->
+  <div class="footer-section grouped">
+    <!-- Explore -->
+    <div class="footer-section">
+      <h3>Explore</h3>
+      <div class="gradient-line"></div>
+      <p>About Us</p>
+      <p>Services</p>
+      <p>Projects</p>
+      <p>Team</p>
+      <p>Book a Visit</p>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <div class="gradient-line"></div>
+      <div class="contact-item">
+        <img src="location 1.png" alt="Location" style="margin-top: 15px;">
+        <span>53, Bhagirath Society,<br>Nr. Sardarnagar, Nadiad.</span>
+      </div>
+      <div class="contact-item">
+        <img src="mail 1.png" alt="Email">
+        <span>cgpatel180@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <img src="telephone-call 3.png" alt="Phone" style="margin-top: 5px;">
+        <span>+91 98254 17208</span>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="footer-section">
+      <h3>Gallery</h3>
+      <div class="gradient-line"></div>
+      <div class="gallery">
+        <div class="gallery-row">
+          <img src="gallery1.png" width="97" height="74">
+          <img src="gallery2 .png" width="97" height="74">
+          <img src="gallery3.png" width="97" height="74">
+        </div>
+        <div class="gallery-row">
+          <img src="gallery4.png" width="331" height="87">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Copyright -->
+<div class="copyright">
+  <div class="gradient-text">©2025 Shivam Electricians | All Rights Reserved</div>
+  <div>
+    <a href="privacypolicy.html">Privacy Policy</a>
+    <a href="termsofservice.html">Terms of Services</a>
+  </div>
+</div>
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.classList.toggle('active');
+    }
+    const slider4 = document.getElementById("slider4");
+    const dots4 = document.querySelectorAll(".dot4");
+    const visibleSlides = 3;
+    const slideWidth = 448 + 32; // Width + gap
+    const totalSlides = document.querySelectorAll(".box4").length;
+    const totalPages = Math.ceil(totalSlides / visibleSlides);
+    let index = 0;
+    let autoSlideInterval;
+
+    function updateSlider() {
+      slider4.style.transform = `translateX(-${index * visibleSlides * slideWidth}px)`;
+      dots4.forEach(dot => dot.classList.remove("active"));
+      if (dots4[index]) dots4[index].classList.add("active");
+    }
+
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(() => {
+        index = (index + 1) % totalPages;
+        updateSlider();
+      }, 3000);
+    }
+
+    function stopAutoSlide() {
+      clearInterval(autoSlideInterval);
+    }
+
+    dots4.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        stopAutoSlide();
+        index = i;
+        updateSlider();
+        startAutoSlide();
+      });
+    });
+
+    updateSlider();
+    startAutoSlide();
+  </script>
+</body>
+</html>

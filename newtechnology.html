@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto Condensed', sans-serif;
+      background: #000;
+      margin: 0;
+      color: white;
+    }
+
+    .navbar {
+      position: absolute;
+      top: 31px;
+      left: 28.9px;
+      right: 28.9px;
+      height: 91px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      background-color: #000;
+      padding: 0 20px;
+    }
+
+    .logo a {
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #F56F08, #1738DA);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      padding: 8px 12px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #F56F08;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1024px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 91px;
+        right: 0;
+        background-color: #000;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .navbar {
+        flex-wrap: wrap;
+      }
+    }
+    .banner-container {
+      position: relative;
+      width: 100%;
+      max-width: 1514px;
+      height: 737px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+.banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .banner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .banner-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+    }
+
+    .banner-content p {
+      font-size: 96px;
+      margin-block: 10px;
+        
+    }
+
+    .banner-content h2 {
+      font-size: 96px;
+      font-weight: 900;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #ffffff, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .container {
+    
+      max-width: calc(100% - 128px); /* 64px left + 64px right */
+      margin: 0 auto;
+      padding: 60px 0;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    .title {
+      grid-column: span 12;
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+      background: linear-gradient(to right, #F56F08 30%, #1738DA 70%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      grid-column: span 12;
+      text-align: center;
+      font-size: 24px;
+      color: white;
+      margin-top:-10px;
+      margin-bottom: 50px;
+    }
+
+    .left {
+      grid-column: span 6;
+    }
+
+    .right {
+      grid-column: span 6;
+      display: flex;
+      justify-content: center;
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: bold;
+      background: linear-gradient(to right, #F56F08 , #1738DA 40%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 20px;
+      font-size: 24px;
+      line-height: 1.5;
+      
+    }
+
+    li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #F56F08, #1738DA);
+    }
+
+    .service-image {
+      width: 619px;
+      height: 790px;
+      object-fit: cover;
+    }
+
+    @media (max-width: 1000px) {
+      .left, .right {
+        grid-column: span 12;
+      }
+      .right {
+        margin-top: 40px;
+      }
+      .service-image {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .container2 {
+      max-width: calc(100% - 128px); /* 64px margin left and right */
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    .section-title2 {
+      grid-column: span 12;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(to right, #F56F08 , #1738DA 20%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .section-paragraph {
+      grid-column: span 12;
+      font-size: 24px;
+      font-weight: 400;
+      color: white;
+      line-height: 1.6;
+      margin-top: 5px;
+    }
+    .container3 {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      padding: 0 64px;
+      gap: 20px;
+      min-height: 100vh;
+      align-items: center;
+    }
+
+    .left3 {
+      grid-column: span 6;
+      margin-left: 50px;
+    }
+
+    .gradient-text3 {
+      font-size: 24px;
+      font-weight: 600;
+      background: linear-gradient(to right, #F56F08, #1738DA 30%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .form-heading3 {
+      font-size: 40px;
+      font-weight: 600;
+      margin: 10px 0 30px;
+      color: white;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .form-row3 {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    input, select, textarea {
+      border-radius: 10px;
+      border: none;
+      padding: 10px 15px;
+      font-size: 20px;
+      color: #6D6969;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    input, select {
+      width: 255px;
+      height: 59px;
+    }
+
+    textarea {
+      width: 533px;
+      height: 163px;
+      resize: none;
+    }
+
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-color: white;
+      background-image: url("data:image/svg+xml;utf8,<svg fill='%236D6969' height='36' viewBox='0 0 24 24' width='36' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+      background-repeat: no-repeat;
+      background-position: calc(100% - 20px) center;
+      background-size: 26px;
+      padding-right: 50px;
+    }
+
+    button {
+      width: 258px;
+      height: 57px;
+      background: linear-gradient(to right, #1738DA, #F56F08);
+      color: white;
+      font-size: 24px;
+      font-family: 'Roboto', sans-serif;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .right3 {
+      grid-column: 7/ span 6;
+      width: 630px;
+      height: 710px;
+      background: linear-gradient(to top right, #1738DA, #F56F08);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+    }
+
+    .right3 h2 {
+      font-size: 64px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .circle-wrapper3 {
+      position: relative;
+      width: 185px;
+      height: 185px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 40px 0;
+    }
+
+    .circle-outer3 {
+      position: absolute;
+      width: 185px;
+      height: 185px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      animation: pulse 1s infinite;
+    }
+
+    .circle-mid3 {
+      position: absolute;
+      width: 151px;
+      height: 151px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: pulse 1s infinite;
+    }
+
+    .circle-inner3 {
+      position: relative;
+      width: 119px;
+      height: 119px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .circle-inner3 img {
+      width: 73px;
+      height: 73px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .help-text3 {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+
+    .phone-number3 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .message3 {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #00ff88;
+    }
+
+    /* === RESPONSIVE MEDIA QUERIES === */
+    @media (max-width: 1023px) {
+      .container3 {
+        display: flex;
+        flex-direction: column;
+        padding: 40px 32px;
+      }
+
+      .left3, .right3 {
+        width: 100%;
+        margin-left: 0;
+      }
+
+      .form-row3 {
+        flex-direction: column;
+      }
+
+      input, select {
+        width: 100%;
+      }
+
+      textarea {
+        width: 100%;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      .right3 {
+        margin-top: 40px;
+        height: auto;
+      }
+
+      .right3 h2 {
+        font-size: 36px;
+      }
+
+      .phone-number3 {
+        font-size: 28px;
+      }
+    }
+    .footer {
+    width: 1514px;
+    height: 453px;
+    display: flex;
+    padding: 50px;
+    background-color: #191919;
+    box-sizing: border-box;
+    gap: 50px;
+  }
+
+  .footer-section.about {
+    width: 28%;
+    margin-top: 50px;
+  }
+
+  .footer-section.grouped {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+  }
+
+  .footer-section h2 {
+    font-size: 32px;
+    font-weight: 500;
+    background: linear-gradient(to right, #F56F08, #1738DA 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .footer-section p,
+  .footer-section li,
+  .footer-section span {
+    font-size: 20px;
+    font-weight: 400;
+    color: white;
+    margin: 10px 0;
+  }
+
+  .footer-section h3 {
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .gradient-line {
+    width: 214px;
+    height: 2px;
+    background: linear-gradient(to right, #F56F08, #1738DA);
+    margin-bottom: 15px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .contact-item img {
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+  }
+
+  .gallery img {
+    margin: 3px;
+  }
+
+  .gallery-row {
+    display: flex;
+    gap: 14px;
+  }
+
+  .copyright {
+    width: 1528px;
+    height: 61px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    box-sizing: border-box;
+  }
+
+  .gradient-text {
+    background: #636161;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 20px;
+    font-weight: normal;
+  }
+
+  .copyright a {
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: normal;
+    background: #636161;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .footer {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      height: auto;
+      padding: 40px 30px;
+      gap: 40px;
+    }
+
+    .footer-section.about {
+      width: 100%;
+      margin-top: 0;
+    }
+
+    .footer-section.grouped {
+      flex-direction: column;
+      width: 100%;
+      margin-top: 0;
+      gap: 40px;
+    }
+
+    .footer-section {
+      width: 100%;
+    }
+
+    .footer-section h2,
+    .footer-section h3 {
+      text-align: left;
+    }
+
+    .gallery-row {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .copyright {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      height: auto;
+      padding: 20px;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .copyright a {
+      margin: 0 10px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .footer {
+      padding: 30px 20px;
+    }
+
+    .footer-section h2 {
+      font-size: 26px;
+    }
+
+    .footer-section h3 {
+      font-size: 20px;
+    }
+
+    .footer-section p,
+    .footer-section span {
+      font-size: 16px;
+    }
+
+    .contact-item img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .gradient-line {
+      width: 150px;
+    }
+
+    .gallery-row img {
+      width: 100px;
+      height: auto;
+    }
+
+    .copyright {
+      font-size: 14px;
+    }
+
+    .copyright a {
+      font-size: 14px;
+    }
+  }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+    <div class="logo">
+      <a href="index.html">Shivam Electricians</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="aboutus.html">About us</a>
+      <a class="active" href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="team.html">Team</a>
+      <a href="bookavisit.html">Book a Visit</a>
+    </div>
+  </div>
+  <div class="banner-container">
+    <img src="new technology banner.png" class="banner-image" alt="Banner 1">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+      <h2>New Technology</h2>
+      
+    </div>
+</div>
+<div class="container">
+    <div class="title">Modern Electrical Solutions</div>
+    <div class="subtitle">
+Upgrade your property with smart and sustainable electrical innovations.</div>
+
+    <div class="left">
+      <div class="section-title">Smart Services:</div>
+      <ul>
+        <li>Smart Switches & Voice Control – Alexa, Google Assistant integration.</li>
+        <li>Smart Lighting Setup – Motion-sensor and remote-controlled lighting.</li>
+        <li>Home Automation – Full automation for lights, fans, AC, geysers.</li>
+        <li>Energy Monitoring Systems – Track your power usage in real time.</li>
+        <li>Solar Panel Installation Assistance – Basic electrical integration.</li>
+      </ul>
+    </div>
+
+    <div class="right">
+      <img class="service-image" src="new technology img.png" alt="Electrical Service">
+    </div>
+  </div>
+  <div class="container2">
+    <div class="section-title2">Service Overview</div>
+
+    <div class="section-paragraph">
+      At Shivam Electrician, we are a team of experienced electricians dedicated to delivering safe, reliable, and affordable electrical solutions. With a strong focus on quality workmanship and customer satisfaction, we serve both residential and commercial clients with a wide range of services—from simple repairs to complex installations. Our goal is to ensure every job is done right the first time, using the latest tools, technology, and industry standards. Whether it’s routine maintenance or emergency support, you can count on us for prompt and professional service every time.
+    </div>
+
+    <div class="section-paragraph">
+      Shivam Electricians is built on the values of trust, quality, and customer care. We are not just electricians — we are problem solvers who bring light, power, and safety to your everyday life. With years of hands-on experience, our skilled team handles everything from small household repairs to full-scale electrical setups for offices, shops, and new constructions. We stay updated with the latest tools and technologies to offer modern solutions like smart home installations, energy-efficient lighting, and EV charging stations. What makes us different is our commitment to making your experience smooth, stress-free, and affordable. We listen, we explain, and we deliver—always on time and with a smile. Whether you need emergency support or want to upgrade your space, we’re here to help with dependable service you can count on.
+    </div>
+  </div>
+  <div class="container3">
+    <!-- LEFT SECTION -->
+    <div class="left3">
+      <div class="gradient-text3">Send Us Email</div>
+      <div class="form-heading3">Feel Free To Write</div>
+      <form id="contactForm">
+        <div class="form-row3">
+          <input type="text" name="Name" id="name" placeholder="Your Name" required>
+          <input type="email" name="Email" id="email" placeholder="Email Address" required>
+        </div>
+        <div class="form-row3">
+          <select id="services" name="Services" required>
+            <option value="">Services</option>
+            <option>Home Services</option>
+            <option>Commercial Services</option>
+            <option>Emergency Help</option>
+            <option>New Technology</option>
+            <option>Full Contract</option>
+          </select>
+          <input type="tel" id="phone" name="Phone no" placeholder="Enter Phone No" required>
+        </div>
+        <textarea id="message" name="Message" placeholder="Message..." required></textarea>
+        <button type="submit">SEND MESSAGE</button>
+        <div class="message3" id="responseMsg"></div>
+      </form>
+    </div>
+
+    <!-- RIGHT SECTION -->
+    <div class="right3">
+      <h2>Contact with us<br>for any advice</h2>
+      <div class="circle-wrapper3">
+        <div class="circle-outer3"></div>
+        <div class="circle-mid3"></div>
+        <div class="circle-inner3">
+          <img src="telephone-call 3.png" alt="Call Icon" />
+        </div>
+      </div>
+      <div class="help-text3">Need help? Talk to an expert</div>
+      <div class="phone-number3">+91 98254 17208</div>
+    </div>
+  </div>
+
+  <div class="footer">
+  <!-- About Us -->
+  <div class="footer-section about">
+    <h2>ABOUT US</h2>
+    <p>We are a team of licensed and experienced electricians dedicated to providing safe, reliable, and high-quality electrical services for residential, commercial, and industrial clients.</p>
+    <p>Work in limited cities and near by villages.</p>
+  </div>
+
+  <!-- Grouped Sections: Explore, Contact, Gallery -->
+  <div class="footer-section grouped">
+    <!-- Explore -->
+    <div class="footer-section">
+      <h3>Explore</h3>
+      <div class="gradient-line"></div>
+      <p>About Us</p>
+      <p>Services</p>
+      <p>Projects</p>
+      <p>Team</p>
+      <p>Book a Visit</p>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <div class="gradient-line"></div>
+      <div class="contact-item">
+        <img src="location 1.png" alt="Location" style="margin-top: 15px;">
+        <span>53, Bhagirath Society,<br>Nr. Sardarnagar, Nadiad.</span>
+      </div>
+      <div class="contact-item">
+        <img src="mail 1.png" alt="Email">
+        <span>cgpatel180@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <img src="telephone-call 3.png" alt="Phone" style="margin-top: 5px;">
+        <span>+91 98254 17208</span>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="footer-section">
+      <h3>Gallery</h3>
+      <div class="gradient-line"></div>
+      <div class="gallery">
+        <div class="gallery-row">
+          <img src="gallery1.png" width="97" height="74">
+          <img src="gallery2 .png" width="97" height="74">
+          <img src="gallery3.png" width="97" height="74">
+        </div>
+        <div class="gallery-row">
+          <img src="gallery4.png" width="331" height="87">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Copyright -->
+<div class="copyright">
+  <div class="gradient-text">©2025 Shivam Electricians | All Rights Reserved</div>
+  <div>
+    <a href="privacypolicy.html">Privacy Policy</a>
+    <a href="termsofservice.html">Terms of Services</a>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.classList.toggle('active');
+    }
+  (function () {
+      emailjs.init("4FGk2kYh_Fe9zKEzt");
+    })();
+
+    const form = document.getElementById('contactForm');
+    const responseMsg = document.getElementById('responseMsg');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const services = document.getElementById('services').value;
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !services || !phone || !message) {
+        responseMsg.style.color = 'red';
+        responseMsg.textContent = "Please fill all the fields.";
+        return;
+      }
+
+      const formData = {
+        from_name: name,
+        from_email: email,
+        service_type: services,
+        phone_number: phone,
+        message: message
+      };
+
+      emailjs.send("service_cpun54b", "template_fgec1ol", formData)
+        .then(function (response) {
+          responseMsg.style.color = '#00ff88';
+          responseMsg.textContent = "Message sent successfully!";
+          alert("Your message was sent to mailbox");
+          form.reset();
+        }, function (error) {
+          responseMsg.style.color = 'red';
+          responseMsg.textContent = "Failed to send message. Try again later.";
+          console.error('FAILED...', error);
+        });
+    });
+</script>
+
+</body>
+</html>

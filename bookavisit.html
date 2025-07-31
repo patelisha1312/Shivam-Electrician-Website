@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto Condensed', sans-serif;
+      background: #000;
+      color: white;
+    }
+
+    .navbar {
+      position: absolute;
+      top: 31px;
+      left: 28.9px;
+      right: 28.9px;
+      height: 91px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      background-color: #000;
+      padding: 0 20px;
+    }
+
+    .logo a {
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #F56F08, #1738DA);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      padding: 8px 12px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #F56F08;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1024px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 91px;
+        right: 0;
+        background-color: #000;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .navbar {
+        flex-wrap: wrap;
+      }
+    }
+    .banner-container {
+      position: relative;
+      width: 100%;
+      max-width: 1514px;
+      height: 737px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .banner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .banner-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+    }
+
+    .banner-content p {
+      font-size: 24px;
+      margin-block: 10px;
+    }
+
+    .banner-content h2 {
+      font-size: 98px;
+      font-weight: 900;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #ffffff, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .container6 {
+      display: grid;
+      margin-top: -15px;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 32px;
+      padding: 64px;
+    }
+
+    .form-section6 {
+      grid-column: span 6;
+      background-color: #000;
+      padding: 40px;
+      width: 680px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .form-title6 {
+      font-size: 64px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .row6 {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      width: 100%;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .input-box {
+      border-radius: 10px;
+      border: none;
+      padding: 16px;
+      font-size: 20px;
+      font-family: 'Roboto Condensed', sans-serif;
+      color: #6D6969;
+      background-color: white;
+    }
+
+    .box2956, .box2916 {
+      width: 291px;
+      height: 71px;
+    }
+
+    .input-box::placeholder,
+    textarea::placeholder {
+      color: #6D6969;
+      font-size: 20px;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-weight: 400;
+    }
+
+    select.input-box {
+      appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg fill='%236D6969' height='36' viewBox='0 0 24 24' width='36' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 20px) center;
+      background-size: 26px;
+      padding-right: 50px;
+    }
+
+    .address-box6, .message-box6 {
+      width: 606px;
+      border-radius: 10px;
+      padding: 16px;
+      font-size: 20px;
+      font-family: 'Roboto Condensed', sans-serif;
+      color: #6D6969;
+      margin-bottom: 20px;
+      resize: none;
+    }
+
+    .address-box6 { height: 115px; }
+    .message-box6 { height: 139px; }
+
+    .budget-label6 {
+      font-size: 24px;
+      color: white;
+      margin-bottom: 8px;
+      width: 100%;
+      text-align: left;
+    }
+
+    .range-wrapper6 {
+      position: relative;
+      width: 607px;
+      height: 40px;
+      margin-top: 20px;
+    }
+
+    .range-value-display6 {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      font-weight: 600;
+      color: #6D6969;
+    }
+
+    .budget-range6 {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: #6D6969;
+      appearance: none;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .budget-range6::-webkit-slider-thumb {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+      margin-top: -6px;
+      position: relative;
+      top: 3px;
+    }
+
+    .budget-range6::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+      position: relative;
+      top: -6px;
+    }
+
+    .submit-button6 {
+      width: 606px;
+      height: 67px;
+      font-size: 32px;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(55deg, #F56F08, #1738DA);
+      cursor: pointer;
+    }
+
+    #formMessage {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+
+    .info-section6 {
+      grid-column: span 6;
+      margin-top: 50px;
+      margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+      justify-content: center;
+    }
+
+    .help-label6 {
+      font-size: 24px;
+      font-weight: bold;
+      font-family: 'Roboto';
+      background: linear-gradient(to right, #F56F08, #1738DA 30%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .touch-title6 {
+      font-size: 40px;
+      font-weight: 500;
+      color: white;
+    }
+
+    .description6 {
+      font-size: 24px;
+      color: white;
+      max-width: 520px;
+    }
+
+    .info-item6 {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .info-item6 img {
+      width: 64px;
+      height: 64px;
+    }
+
+    .info-heading6 {
+      font-size: 24px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .info-text6 {
+      font-size: 24px;
+      font-weight: 400;
+      color: white;
+    }
+    @media (max-width: 1024px) {
+  .container6 {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 24px;
+    gap: 48px;
+  }
+
+  .form-section6,
+  .info-section6 {
+    width: 100%;
+    max-width: 100%;
+    padding: 24px;
+  }
+
+  .form-title6 {
+    font-size: 40px;
+  }
+
+  .row6 {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .box2956, .box2916,
+  .address-box6, .message-box6,
+  .submit-button6, .range-wrapper6 {
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  .input-box,
+  .address-box6,
+  .message-box6 {
+    font-size: 18px;
+    padding: 14px;
+  }
+
+  .budget-label6,
+  .range-value-display6 {
+    font-size: 18px;
+  }
+
+  .budget-range6 {
+    height: 6px;
+  }
+
+  .submit-button6 {
+    height: 60px;
+    font-size: 24px;
+  }
+
+  .touch-title6 {
+    font-size: 32px;
+  }
+
+  .description6,
+  .info-heading6,
+  .info-text6 {
+    font-size: 18px;
+  }
+
+  .info-item6 {
+    gap: 16px;
+  }
+
+  .info-item6 img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .range-wrapper6 {
+    height: auto;
+  }
+
+  .range-value-display6 {
+    top: -26px;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-title6 {
+    font-size: 32px;
+  }
+
+  .submit-button6 {
+    font-size: 20px;
+  }
+
+  .touch-title6 {
+    font-size: 28px;
+  }
+
+  .description6 {
+    font-size: 16px;
+  }
+
+  .info-heading6,
+  .info-text6 {
+    font-size: 16px;
+  }
+}
+
+    .container {
+      max-width: calc(100% - 128px); /* 64px left + 64px right */
+      margin: 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+
+    .map {
+      grid-column: span 12;
+    }
+
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: 0;
+    }
+    .footer {
+  width: 1514px;
+  height: 453px;
+  display: flex;
+  padding: 50px;
+  background-color: #191919;
+  box-sizing: border-box;
+  gap: 50px; /* Controls gap between About Us and the rest */
+}
+
+.footer-section.about {
+  width: 28%; /* Fixed width for About Us */
+  margin-top: 50px;
+}
+
+.footer-section.grouped {
+  flex: 1; /* Remaining sections share the rest of the space equally */
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+    .footer-section h2 {
+      font-size: 32px;
+      font-weight: 500;
+      background: linear-gradient(to right, #F56F08, #1738DA 50%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .footer-section p, .footer-section li, .footer-section span {
+      font-size: 20px;
+      font-weight: 400;
+      color: white;
+      margin: 10px 0;
+    }
+    .footer-section h3 {
+      font-size: 24px;
+      font-weight: 500;
+      color: white;
+      margin-bottom: 10px;
+    }
+    .gradient-line {
+      width: 214px;
+      height: 2px;
+      background: linear-gradient(to right, #F56F08, #1738DA);
+      margin-bottom: 15px;
+    }
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-section ul li {
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .contact-item img {
+      width: 36px;
+      height: 36px;
+      margin-right: 10px;
+    }
+    .gallery img {
+      margin: 3px;
+    }
+    .gallery-row {
+      display: flex;
+      gap: 14px;
+    }
+    .copyright {
+      width: 1528px;
+      height: 61px;
+      background-color: black;
+      color:white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+      box-sizing: border-box;
+    }
+    .gradient-text {
+      background:#636161;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 20px;
+      font-weight:normal;
+    }
+    .copyright a {
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 20px;
+      font-weight:normal;
+      background:#636161;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    @media screen and (max-width: 1024px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    padding: 40px 30px;
+    gap: 40px;
+  }
+
+  .footer-section.about {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .footer-section.grouped {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0;
+    gap: 40px;
+  }
+
+  .footer-section {
+    width: 100%;
+  }
+
+  .footer-section h2,
+  .footer-section h3 {
+    text-align: left;
+  }
+
+  .gallery-row {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .copyright {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .copyright a {
+    margin: 0 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    padding: 30px 20px;
+  }
+
+  .footer-section h2 {
+    font-size: 26px;
+  }
+
+  .footer-section h3 {
+    font-size: 20px;
+  }
+
+  .footer-section p,
+  .footer-section li,
+  .footer-section span {
+    font-size: 16px;
+  }
+
+  .contact-item img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .gradient-line {
+    width: 150px;
+  }
+
+  .gallery-row img {
+    width: 100px;
+    height: auto;
+  }
+
+  .copyright {
+    font-size: 14px;
+  }
+
+  .copyright a {
+    font-size: 14px;
+  }
+}
+    </style>
+</head>
+<body>
+    <div class="navbar">
+    <div class="logo">
+      <a href="index.html">Shivam Electricians</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="aboutus.html">About us</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="team.html">Team</a>
+      <a class="active" href="bookavisit.html">Book a Visit</a>
+    </div>
+  </div>
+
+  <div class="banner-container">
+    <img src="book.png" class="banner-image" alt="Banner" />
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+      <h2>Book a visit</h2>
+      <p>Schedule a visit with our expert electricians at your<br> convenience for fast, reliable, and hassle-free<br> service.
+      </p>
+    </div>
+  </div>
+  <div class="container6">
+    <div class="form-section6">
+      <form id="inquiryForm" onsubmit="return validateForm(event)">
+        <h1 class="form-title6">Inquiry</h1>
+
+        <div class="row6">
+          <input class="input-box box2956" type="text" placeholder="Your Name" name="name" />
+          <input class="input-box box2916" type="email" placeholder="Email Address" name="email" />
+        </div>
+
+        <div class="row6">
+          <select class="input-box box2956" name="service">
+            <option value="" disabled selected>Services</option>
+            <option>Home Services</option>
+            <option>Commercial Services</option>
+            <option>Emergency Help</option>
+            <option>New Technology</option>
+            <option>Full Contract</option>
+          </select>
+          <input class="input-box box2916" type="tel" placeholder="Enter Phone no" name="phone" />
+        </div>
+
+        <textarea class="address-box6" placeholder="Address..." name="address"></textarea>
+
+        <label class="budget-label6">Budget Range</label>
+        <div class="range-wrapper6">
+          <div class="range-value-display6" id="rangeOutput6">₹10K</div>
+          <input class="budget-range6" type="range" min="1000" max="20000" value="10000" id="budgetRange6" oninput="updateRangeValue(this)">
+        </div>
+
+        <textarea class="message-box6" placeholder="Message..." name="message"></textarea>
+
+        <button class="submit-button6" type="submit">Submit Request</button>
+        <p id="formMessage"></p>
+      </form>
+    </div>
+
+    <div class="info-section6">
+      <h3 class="help-label6"><span>NEED</span> <span class="highlight6">ANY HELP?</span></h3>
+      <h2 class="touch-title6">Get in touch with us</h2>
+      <p class="description6">For inquiries about our services in, please reach out to us for expert guidance and assistance.</p>
+
+      <div class="info-item6">
+        <img src="any question 1.png" alt="icon" />
+        <div>
+          <p class="info-heading6">Have any questions?</p>
+          <p class="info-text6">Free +91 98254 17208</p>
+        </div>
+      </div>
+
+      <div class="info-item6">
+        <img src="mail 1.png" alt="email icon" />
+        <div>
+          <p class="info-heading6">Write Email</p>
+          <p class="info-text6">cgpatel180@gmail.com</p>
+        </div>
+      </div>
+
+      <div class="info-item6">
+        <img src="location 1.png" alt="location icon" />
+        <div>
+          <p class="info-heading6">For visit</p>
+          <p class="info-text6">53,Bhagirath Society,<br>Nr. Sardarnagar, Nadiad.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="container">
+    <div class="grid">
+      <div class="map">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.676312813314!2d72.84621737564017!3d22.703090579398914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e5b9f092c1761%3A0x9a8c190162cd75f1!2sBhagirath%20Society!5e0!3m2!1sen!2sin!4v1749481213479!5m2!1sen!2sin" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+<div class="footer">
+  <!-- About Us -->
+  <div class="footer-section about">
+    <h2>ABOUT US</h2>
+    <p>We are a team of licensed and experienced electricians dedicated to providing safe, reliable, and high-quality electrical services for residential, commercial, and industrial clients.</p>
+    <p>Work in limited cities and near by villages.</p>
+  </div>
+
+  <!-- Grouped Sections: Explore, Contact, Gallery -->
+  <div class="footer-section grouped">
+    <!-- Explore -->
+    <div class="footer-section">
+      <h3>Explore</h3>
+      <div class="gradient-line"></div>
+      <ul>
+        <li>About Us</li>
+        <li>Services</li>
+        <li>Projects</li>
+        <li>Team</li>
+        <li>Book a Visit</li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <div class="gradient-line"></div>
+      <div class="contact-item">
+        <img src="location 1.png" alt="Location" style="margin-top: 15px;">
+        <span>53,Bhagirath Society,<br>Nr. Sardarnagar, Nadiad.</span>
+      </div>
+      <div class="contact-item">
+        <img src="mail 1.png" alt="Email">
+        <span>cgpatel180@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <img src="telephone-call 3.png" alt="Phone" style="margin-top: 5px;">
+        <span>+91 98254 17208</span>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="footer-section">
+      <h3>Gallery</h3>
+      <div class="gradient-line"></div>
+      <div class="gallery">
+        <div class="gallery-row">
+          <img src="gallery1.png" width="97" height="74">
+          <img src="gallery2 .png" width="97" height="74">
+          <img src="gallery3.png" width="97" height="74">
+        </div>
+        <div class="gallery-row">
+          <img src="gallery4.png" width="331" height="87">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Copyright -->
+  <div class="copyright">
+    <div class="gradient-text">©2025 Shivam Electricians | All Rights Reserved</div>
+    <div>
+      <a href="privacypolicy.html">Privacy Policy</a>
+      <a href="termsofservice.html">Terms of Services</a>
+    </div>
+  </div>
+  <!-- ✅ EmailJS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+     function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.classList.toggle('active');
+    }
+    (function () {
+    emailjs.init("4FGk2kYh_Fe9zKEzt"); // Replace with your actual EmailJS public key
+  })();
+
+  function updateRangeValue(slider) {
+    const min = parseInt(slider.min);
+    const max = parseInt(slider.max);
+    const val = parseInt(slider.value);
+    const percentage = ((val - min) / (max - min)) * 100;
+
+    slider.style.background = `linear-gradient(to right, #F56F08 0%, #1738DA ${percentage}%, #6D6969 ${percentage}%, #6D6969 100%)`;
+
+    const output = document.getElementById('rangeOutput6');
+    if (val < 5000) output.textContent = "0K - 1K";
+    else if (val < 10000) output.textContent = "5K - 10K";
+    else if (val < 15000) output.textContent = "10K - 15K";
+    else if (val < 20000) output.textContent = "15K - 20K";
+    else output.textContent = "25K";
+
+    const thumbWidth = 20;
+    const offset = (percentage / 100) * slider.offsetWidth - (thumbWidth / 2);
+    output.style.left = `${offset}px`;
+  }
+
+  function validateForm(event) {
+    event.preventDefault();
+
+    const name = document.querySelector('input[name="name"]').value.trim();
+    const email = document.querySelector('input[name="email"]').value.trim();
+    const phone = document.querySelector('input[name="phone"]').value.trim();
+    const service = document.querySelector('select[name="service"]').value;
+    const address = document.querySelector('textarea[name="address"]').value.trim();
+    const message = document.querySelector('textarea[name="message"]').value.trim();
+    const budget = document.getElementById("rangeOutput6").textContent; // ✅ Get budget value
+    const formMessage = document.getElementById("formMessage");
+
+    if (!name || !email || !phone || !service || !address || !message) {
+      formMessage.style.color = "red";
+      formMessage.textContent = "Please fill out all fields!";
+      return false;
+    }
+
+    const templateParams = {
+      name: name,
+      email: email,
+      phone: phone,
+      service: service,
+      address: address,
+      message: message,
+      budget: budget,
+      time: new Date().toLocaleString(), 
+    };
+
+    emailjs.send("service_cpun54b", "template_08w6s5t", templateParams)
+      .then(function (response) {
+        formMessage.style.color = "#00FF00";
+        formMessage.textContent = "Your request has been submitted successfully!";
+        document.getElementById("inquiryForm").reset();
+
+        const slider = document.getElementById("budgetRange6");
+        slider.value = 10000;
+        updateRangeValue(slider);
+      }, function (error) {
+        formMessage.style.color = "red";
+        formMessage.textContent = "Failed to send. Please try again.";
+        console.error("EmailJS error:", error);
+      });
+
+    return true;
+  }
+
+  window.onload = () => {
+    const slider = document.getElementById("budgetRange6");
+    updateRangeValue(slider);
+  };
+  </script>
+</body>
+</html>

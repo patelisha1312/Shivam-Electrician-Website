@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto Condensed', sans-serif;
+      background: #000;
+      margin: 0;
+      color: white;
+    }
+
+    .navbar {
+      position: absolute;
+      top: 31px;
+      left: 28.9px;
+      right: 28.9px;
+      height: 91px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      background-color: #000;
+      padding: 0 20px;
+    }
+
+    .logo a {
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #F56F08, #1738DA);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      padding: 8px 12px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #F56F08;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1024px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 91px;
+        right: 0;
+        background-color: #000;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .navbar {
+        flex-wrap: wrap;
+      }
+    }
+    .banner-container {
+      position: relative;
+      width: 100%;
+      max-width: 1514px;
+      height: 737px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+.banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .banner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .banner-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+    }
+
+    .banner-content p {
+      font-size: 24px;
+      margin-block: 10px;
+        
+    }
+
+    .banner-content h2 {
+      font-size: 98px;
+      font-weight: 900;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #ffffff, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .section-container {
+      margin: 80px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* Left Part */
+    .left-part {
+      grid-column: span 6;
+      position: relative;
+    }
+
+    .image-container {
+      position: relative;
+      width: 587px;
+      height: 783.15px;
+      overflow: visible;
+      margin-left: 30px;
+    }
+
+    .main-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .experience-box {
+      position: absolute;
+      bottom: 30px;
+      left: -50px;
+      width: 416px;
+      height: 190.34px;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+    }
+
+    .icon-circle {
+      width: 97px;
+      height: 97px;
+      background-color: black;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+    }
+
+    .icon-image {
+      width: 68px;
+      height: 68px;
+    }
+
+    .experience-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .gradient-text1 {
+      font-size: 36px;
+      font-weight: bold;
+      background: linear-gradient(45deg, #F56F08 , #1738DA 40%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .black-text {
+      font-size: 36px;
+      color: black;
+      font-weight: 500;
+    }
+
+    /* Right Part */
+    .right-part {
+      grid-column: span 6;
+    }
+
+    .welcome-text {
+      font-size: 24px;
+      font-weight: 300;
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    .headline-text {
+      font-size: 32px;
+      font-weight: bold;
+      line-height: 1.4;
+      background: linear-gradient(45deg, #F56F08 , #1738DA 60%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 24px;
+    }
+
+    .description-text {
+      font-size: 20px;
+      font-weight: 400;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 40px 0;
+    }
+
+    .feature-list li {
+      font-size: 18px;
+      color: white;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: linear-gradient(45deg, #F56F08, #1738DA);
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .contact-button {
+      width: 200px;
+      height: 55px;
+      font-size: 20px;
+      font-weight: 400;
+      color: white;
+      background: linear-gradient(45deg, #F56F08, #1738DA);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .contact-button-link {
+      text-decoration: none;
+    }
+
+    /* ========== Responsive (Only Right Part Adjusts) ========== */
+    @media (max-width: 1024px) {
+      .grid-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+      }
+
+      .left-part {
+        flex: 0 0 587px; /* fixed width to keep image + experience box consistent */
+        max-width: 100%;
+      }
+
+      .right-part {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .headline-text,
+      .welcome-text,
+      .description-text,
+      .feature-list li {
+        text-align: left;
+      }
+
+      
+    }
+
+    @media (max-width: 600px) {
+      .section-container {
+        margin: 20px;
+      }
+
+      .image-container {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+      }
+
+      .experience-box {
+        position: static;
+        margin-top: 20px;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .icon-circle {
+        margin: 0 0 16px 0;
+      }
+
+      .gradient-text1,
+      .black-text {
+        font-size: 28px;
+      }
+
+      .headline-text {
+        font-size: 24px;
+      }
+
+      .description-text {
+        font-size: 16px;
+      }
+
+      .feature-list li {
+        font-size: 16px;
+      }
+
+      .contact-button {
+        width: 100%;
+    height: 50px;
+    font-size: 18px;
+    text-align: left;
+    padding-left: 16px;
+        
+      }
+    }
+/* === Base Styles === */
+.section {
+  padding: 10px 64px;
+}
+
+.head {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.title1 {
+  font-size: 32px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #F56F08 40%, #1738DA 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 24px;
+  font-weight: lighter;
+  margin-top: 16px;
+}
+
+.carousel {
+  position: relative;
+  overflow: visible;
+}
+
+/* === Hide arrows initially === */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 32px;
+  font-weight: bold;
+  display: none; /* Hidden by default */
+  align-items: center;
+  justify-content: center;
+  color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, opacity 0.3s ease;
+}
+
+/* === Show on carousel hover === */
+.carousel:hover .arrow {
+  display: flex;
+}
+
+.arrow.left {
+  left: -30px;
+}
+
+.arrow.right {
+  right: -30px;
+}
+
+.cards {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 60px;
+  scroll-snap-type: x mandatory;
+}
+
+.cards::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  position: relative;
+  width: 448px;
+  flex: 0 0 auto;
+  cursor: pointer;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  background: white;
+  scroll-snap-align: center;
+}
+
+.image {
+  height: 308px;
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  position: relative;
+}
+
+.image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.icon {
+  position: absolute;
+  top: 270px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 99px;
+  height: 99px;
+  background: black;
+  border: 4px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.icon img {
+  width: 55px;
+  height: 55px;
+}
+
+.info {
+  background: white;
+  color: black;
+  height: 190px;
+  text-align: center;
+  padding-top: 64px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: relative;
+  overflow: visible;
+}
+
+.label {
+  font-size: 36px;
+  font-weight: lighter;
+}
+
+.btnbox {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -10%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.card:hover .btnbox {
+  opacity: 1;
+}
+
+.button {
+  width: 201px;
+  height: 55px;
+  margin-top: -30px;
+  font-size: 1.125rem;
+  color: white;
+  background: linear-gradient(45deg, #F56F08, #1738DA);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* === Responsive Arrow Adjustments === */
+@media (max-width: 992px) {
+  .section {
+    padding: 10px 32px;
+  }
+
+  .title1 {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+  }
+
+  .card {
+    width: 320px;
+  }
+
+  .image {
+    height: 220px;
+  }
+
+  .icon {
+    top: 190px;
+    width: 70px;
+    height: 70px;
+  }
+
+  .icon img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .info {
+    height: 160px;
+    padding-top: 50px;
+  }
+
+  .label {
+    font-size: 24px;
+  }
+
+  .button {
+    width: 160px;
+    height: 45px;
+    font-size: 1rem;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    top: 46%;
+  }
+
+  .arrow.left {
+    left: 0;
+  }
+
+  .arrow.right {
+    right: 0;
+  }
+
+  /* Optional: Keep arrows hidden permanently on touch devices */
+  .carousel:hover .arrow {
+    display: none; /* Because hover is not supported */
+  }
+}
+
+@media (max-width: 576px) {
+  .section {
+    padding: 10px 16px;
+  }
+
+  .title1 {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .card {
+    width: 280px;
+  }
+
+  .label {
+    font-size: 20px;
+  }
+
+  .button {
+    width: 140px;
+    height: 42px;
+  }
+
+  .arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 22px;
+    top: 46%;
+  }
+
+  .arrow.left {
+    left: 0;
+  }
+
+  .arrow.right {
+    right: 0;
+  }
+
+  .carousel:hover .arrow {
+    display: none;
+  }
+}
+
+    .container {
+      display: grid;
+      margin-top: -20px;
+      grid-template-columns: repeat(12, 1fr);
+      padding: 0 64px;
+      gap: 5px;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .leftsec {
+      grid-column: span 6;
+      margin-left: 50px;
+      margin-top: -100px;
+    }
+
+    .rightsec {
+      grid-column: span 6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .gradient-textsec {
+      font-size: 36px;
+      font-weight: bold;
+      background: linear-gradient(to right, #F56F08, #1738DA 40%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitlesec {
+      font-size: 32px;
+      font-weight: 500;
+      margin: 16px 0;
+    }
+
+    .pointssec {
+      margin-top: 50px;
+    }
+
+    .pointsec{
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+
+    .point-dotsec {
+      width: 12px;
+      height: 12px;
+      margin-right: 16px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #F56F08, #1738DA);
+      flex-shrink: 0;
+    }
+
+    .imagesec {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    @media screen and (max-width: 1200px) {
+      .container {
+        grid-template-columns: repeat(1, 1fr);
+        padding: 32px;
+        text-align: left;
+        margin-top: 150px;
+      }
+
+      .leftsec, .rightsec {
+        grid-column: span 12;
+      }
+
+      .imagesec {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .containerau {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 64px;
+      overflow: hidden;
+    }
+
+    .titleau {
+      font-size: 36px;
+      font-weight: bold;
+      text-align: center;
+      background: linear-gradient(to right, #F56F08 40%, #1738DA 60%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+
+    .subtitleau {
+      font-size: 24px;
+      font-weight: normal;
+      text-align: center;
+      color: white;
+      margin-bottom: 64px;
+    }
+
+    .slider-wrapper {
+      overflow: hidden;
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      will-change: transform;
+    }
+
+    .cardau {
+      flex: 0 0 calc(33.33% - 21.33px);
+      margin-right: 32px;
+      background-color: #fff;
+      margin-top: 100px;
+      width: 449.62px;
+      height: 405px;
+      position: relative;
+      text-align: center;
+      color: black;
+      border-radius: 8px;
+      padding-top: 110px;
+
+      /* Ensures name aligns at bottom */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .cardau img {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 199px;
+      height: 199px;
+      border-radius: 50%;
+      border: 1px solid black;
+      object-fit: cover;
+    }
+
+    .cardau h3 {
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .starsau {
+      font-size: 25px;
+      margin-bottom: 16px;
+    }
+
+    .starsau span {
+      background: linear-gradient(45deg, #F56F08 30%, #1738DA 70%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .starsau span.black {
+      background: none;
+      -webkit-background-clip: initial;
+      -webkit-text-fill-color: rgb(45, 44, 44);
+    }
+
+    .textau {
+      font-size: 16px;
+      font-weight: 400;
+      margin-top: 30px;
+      padding: 0 20px;
+
+      /* Fixed height for uniform spacing */
+      height: 72px;
+      overflow: hidden;
+    }
+
+    .nameau {
+      margin-top: 50px; /* Push to bottom */
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .paginationau {
+      text-align: center;
+      margin-top: 48px;
+    }
+
+    .dotau {
+      height: 12px;
+      width: 12px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .dotau.active {
+      background-color: #F56F08;
+    }
+    .footer {
+  width: 1514px;
+  height: 453px;
+  display: flex;
+  padding: 50px;
+  background-color: #191919;
+  box-sizing: border-box;
+  gap: 50px;
+}
+
+.footer-section.about {
+  width: 28%;
+  margin-top: 50px;
+}
+
+.footer-section.grouped {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.footer-section h2 {
+  font-size: 32px;
+  font-weight: 500;
+  background: linear-gradient(to right, #F56F08, #1738DA 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer-section p,
+.footer-section li,
+.footer-section span {
+  font-size: 20px;
+  font-weight: 400;
+  color: white;
+  margin: 10px 0;
+}
+
+.footer-section h3 {
+  font-size: 24px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.gradient-line {
+  width: 214px;
+  height: 2px;
+  background: linear-gradient(to right, #F56F08, #1738DA);
+  margin-bottom: 15px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.contact-item img {
+  width: 36px;
+  height: 36px;
+  margin-right: 10px;
+}
+
+.gallery img {
+  margin: 3px;
+}
+
+.gallery-row {
+  display: flex;
+  gap: 14px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.copyright {
+  width: 1528px;
+  height: 61px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.gradient-text {
+  background: #636161;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.copyright a {
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: normal;
+  background: #636161;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Tablet View */
+@media screen and (max-width: 1024px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    padding: 40px 30px;
+    gap: 40px;
+  }
+
+  .footer-section.about {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .footer-section.grouped {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0;
+    gap: 40px;
+  }
+
+  .footer-section {
+    width: 100%;
+  }
+
+  .footer-section h2,
+  .footer-section h3 {
+    text-align: left;
+  }
+
+  .gallery-row {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .copyright {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .copyright a {
+    margin: 0 10px;
+  }
+}
+
+/* Mobile View */
+@media screen and (max-width: 600px) {
+  .footer {
+    padding: 30px 20px;
+  }
+
+  .footer-section h2 {
+    font-size: 26px;
+  }
+
+  .footer-section h3 {
+    font-size: 20px;
+  }
+
+  .footer-section p,
+  .footer-section span {
+    font-size: 16px;
+  }
+
+  .contact-item img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .gradient-line {
+    width: 150px;
+  }
+
+  .gallery-row img {
+    width: 100px;
+    height: auto;
+  }
+
+  .copyright {
+    font-size: 14px;
+  }
+
+  .copyright a {
+    font-size: 14px;
+  }
+}
+    </style>
+</head>
+<body>
+     <div class="navbar">
+    <div class="logo">
+      <a href="index.html">Shivam Electricians</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a class="active" href="aboutus.html">About us</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="team.html">Team</a>
+      <a href="bookavisit.html">Book a Visit</a>
+    </div>
+  </div>
+  <div class="banner-container">
+    <img src="aboutus banner.png" class="banner-image" alt="Banner 1">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+      <h2>About Us</h2>
+      <p>We are a team of certified electricians dedicated<br> to providing safe, reliable, and efficient electrical solutions<br> for homes and businesses.</p>
+    
+    </div>
+</div>
+
+<div class="section-container">
+  <div class="grid-container">
+    <!-- Left Part -->
+    <div class="left-part">
+      <div class="image-container">
+        <img src="aboutus welcome.png" alt="Electrician" class="main-image" />
+        <div class="experience-box">
+          <div class="icon-circle">
+            <img src="aboutus exp.png" alt="Experience Icon" class="icon-image" />
+          </div>
+          <div class="experience-text">
+            <div class="gradient-text1 bold-text">25+</div>
+            <div class="black-text">Years<br>of experience</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Part -->
+    <div class="right-part">
+      <p class="welcome-text">Welcome to</p>
+      <h1 class="headline-text">
+        Shivam Electricians<br>
+        Professional Electrical Services<br>
+        You Can Rely On!
+      </h1>
+      <p class="description-text">
+        At shivam electricians, we are committed to providing safe, efficient, and reliable electrical solutions
+        for residential, commercial, and industrial needs.
+      </p>
+      <p class="description-text">
+        With over 25+ years of experience, our certified electricians deliver top-quality workmanship and outstanding customer service.
+      </p>
+      <p class="description-text">
+        We pride ourselves on building long-term relationships with our clients by being honest, punctual, and affordable.
+      </p>
+      <ul class="feature-list">
+        <li><span class="dot"></span> Deliver Perfect Solution for business</li>
+        <li><span class="dot"></span> Readily Work With Global Brands solutions.</li>
+        <li><span class="dot"></span> Residential Business Installation</li>
+      </ul>
+      <a href="bookavisit.html" class="contact-button-link">
+  <button class="contact-button">CONTACT US</button>
+</a>
+
+    </div>
+  </div>
+</div>
+<section class="section">
+    <div class="head">
+      <h2 class="title1">What We Offer?</h2>
+      <p class="subtitle">
+        Precision. Safety. Excellence in Every Connection.<br />
+        Trusted Electrical Services You Can Rely On.
+      </p>
+    </div>
+
+    <div class="carousel">
+      <div id="cards" class="cards"></div>
+      <button id="prev" class="arrow left">&#8592;</button>
+      <button id="next" class="arrow right">&#8594;</button>
+    </div>
+  </section>
+  <div class="container">
+    <div class="leftsec">
+      <div class="gradient-textsec">OUR BENEFITS</div>
+      <div class="subtitlesec">Why You should Choose us?</div>
+      <div class="pointssec">
+        <div class="pointsec">
+          <div class="point-dotsec"></div>
+          Free Estimates & Transparent Pricing
+        </div>
+        <div class="pointsec">
+          <div class="point-dotsec"></div>
+          Same-Day Appointments Available
+        </div>
+        <div class="pointsec">
+          <div class="point-dotsec"></div>
+          Quality Materials & Modern Equipment
+        </div>
+        <div class="pointsec">
+          <div class="point-dotsec"></div>
+          Satisfaction Guaranteed
+        </div>
+      </div>
+    </div>
+    <div class="rightsec">
+      <img src="aboutus benefits.png" alt="Electrician" class="imagesec" />
+    </div>
+  </div>
+  <div class="containerau">
+    <div class="titleau">Our Mission</div>
+    <div class="subtitleau">
+      To provide reliable and affordable electrical services that ensure the safety, efficiency, and comfort of our customers’ spaces.
+    </div>
+
+    <div class="slider-wrapper">
+      <div class="slider-track" id="slider">
+        <!-- Cards will be injected here -->
+      </div>
+    </div>
+
+    <div class="paginationau" id="pagination">
+      <!-- Pagination dots will be created dynamically -->
+    </div>
+  </div>
+
+  <div class="footer">
+  <!-- About Us -->
+  <div class="footer-section about">
+    <h2>ABOUT US</h2>
+    <p>We are a team of licensed and experienced electricians dedicated to providing safe, reliable, and high-quality electrical services for residential, commercial, and industrial clients.</p>
+    <p>Work in limited cities and near by villages.</p>
+  </div>
+
+  <!-- Grouped Sections: Explore, Contact, Gallery -->
+  <div class="footer-section grouped">
+    <!-- Explore -->
+    <div class="footer-section">
+      <h3>Explore</h3>
+      <div class="gradient-line"></div>
+      <ul>
+        <li>About Us</li>
+        <li>Services</li>
+        <li>Projects</li>
+        <li>Team</li>
+        <li>Book a Visit</li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <div class="gradient-line"></div>
+      <div class="contact-item">
+        <img src="location 1.png" alt="Location" style="margin-top: 15px;">
+        <span>53,Bhagirath Society,<br>Nr. Sardarnagar, Nadiad.</span>
+      </div>
+      <div class="contact-item">
+        <img src="mail 1.png" alt="Email">
+        <span>cgpatel180@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <img src="telephone-call 3.png" alt="Phone" style="margin-top: 5px;">
+        <span>+91 98254 17208</span>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="footer-section">
+      <h3>Gallery</h3>
+      <div class="gradient-line"></div>
+      <div class="gallery">
+        <div class="gallery-row">
+          <img src="gallery1.png" width="97" height="74">
+          <img src="gallery2 .png" width="97" height="74">
+          <img src="gallery3.png" width="97" height="74">
+        </div>
+        <div class="gallery-row">
+          <img src="gallery4.png" width="331" height="87">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Copyright -->
+  <div class="copyright">
+    <div class="gradient-text">©2025 Shivam Electricians | All Rights Reserved</div>
+    <div>
+      <a href="privacypolicy.html">Privacy Policy</a>
+      <a href="termsofservice.html">Terms of Services</a>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.classList.toggle('active');
+    }
+  const cardsContainer = document.getElementById("cards");
+  const prevBtn = document.getElementById("prev");
+  const nextBtn = document.getElementById("next");
+
+  const cardData = [
+    { title: "Home Services", bg: "home service.png", icon: "home service icon.png" },
+    { title: "Commercial Services", bg: "commercial service.png", icon: "commercial icon.png" },
+    { title: "Emergency Help", bg: "emergency service.png", icon: "eh icon.png" },
+    { title: "New Technology", bg: "new technology.png", icon: "nt icon.png" },
+    { title: "Full Contract", bg: "fc.png", icon: "contract .png" }
+  ];
+
+  const pageLinks = {
+    "Home Services": "homeservice.html",
+    "Commercial Services": "commercialservice.html",
+    "Emergency Help": "emergency help.html",
+    "New Technology": "newtechnology.html",
+    "Full Contract": "full contract.html"
+  };
+
+  function renderCards() {
+    cardData.forEach(card => {
+      const cardElement = document.createElement("div");
+      cardElement.className = "card";
+      cardElement.innerHTML = `
+        <div class="image" style="background-image: url('${card.bg}');"></div>
+        <div class="icon"><img src="${card.icon}" alt="Icon" /></div>
+        <div class="info">
+          <h3 class="label">${card.title}</h3>
+          <div class="btnbox">
+            <a class="button" href="${pageLinks[card.title]}">Read More</a>
+          </div>
+        </div>`;
+      cardsContainer.appendChild(cardElement);
+    });
+  }
+
+  renderCards();
+
+  const scrollStep = 472;
+  nextBtn.onclick = () => cardsContainer.scrollBy({ left: scrollStep, behavior: "smooth" });
+  prevBtn.onclick = () => cardsContainer.scrollBy({ left: -scrollStep, behavior: "smooth" });
+    const reviews = [
+      { name: "Isha Patel", image: "review1.png", stars: 4, comment: "I feel very happy and proud to connect with this industry." },
+      { name: "Rimple Patel", image: "review2.png", stars: 4, comment: "I presume this is a very productive experience for me." },
+      { name: "Ritesh Patel", image: "review3.png", stars: 5, comment: "Great services and friendly support from the team." },
+      { name: "Chandresh Patel", image: "review4.png", stars: 4, comment: "Reliable and affordable electrical services, recommended." },
+      { name: "Vidhi Patel", image: "review6.png", stars: 5, comment: "Quick response and expert service, very happy!" },
+      { name: "Isha Patel", image: "review5.png", stars: 5, comment: "Professional work and attention to detail. Excellent!" }
+    ];
+
+    const slider = document.getElementById("slider");
+    const pagination = document.getElementById("pagination");
+
+    // Duplicate first few cards to enable infinite loop effect
+    const extendedReviews = [...reviews, ...reviews.slice(0, 3)];
+    let currentIndex = 0;
+
+    // Render cards
+    extendedReviews.forEach(r => {
+      let starsHTML = "";
+      for (let j = 0; j < r.stars; j++) starsHTML += '<span>★</span>';
+      for (let j = r.stars; j < 5; j++) starsHTML += '<span class="black">★</span>';
+
+      const card = document.createElement("div");
+      card.className = "cardau";
+      card.innerHTML = `
+        <img src="${r.image}" alt="${r.name}">
+        <h3>Great Services</h3>
+        <div class="starsau">${starsHTML}</div>
+        <div class="textau">${r.comment}</div>
+        <div class="nameau">${r.name}</div>
+      `;
+      slider.appendChild(card);
+    });
+
+    // Create dots
+    reviews.forEach((_, i) => {
+      const dot = document.createElement("span");
+      dot.className = "dotau";
+      if (i === 0) dot.classList.add("active");
+      dot.addEventListener("click", () => {
+        currentIndex = i;
+        updateSlider();
+        resetInterval();
+      });
+      pagination.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll(".dotau");
+
+    function updateSlider() {
+      const cardWidth = slider.children[0].offsetWidth + 32; // card + margin
+      slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
+      dots.forEach(dot => dot.classList.remove("active"));
+      dots[currentIndex % reviews.length].classList.add("active");
+    }
+
+    function nextSlide() {
+      currentIndex++;
+      updateSlider();
+      if (currentIndex === reviews.length) {
+        setTimeout(() => {
+          slider.style.transition = "none";
+          currentIndex = 0;
+          updateSlider();
+          // Re-enable transition
+          void slider.offsetWidth;
+          slider.style.transition = "transform 0.5s ease-in-out";
+        }, 500);
+      }
+    }
+
+    let autoSlide = setInterval(nextSlide, 3000);
+
+    function resetInterval() {
+      clearInterval(autoSlide);
+      autoSlide = setInterval(nextSlide, 3000);
+    }
+
+    // Set initial transition style
+    slider.style.transition = "transform 0.5s ease-in-out";
+    updateSlider();
+    </script>
+</body>
+</html>

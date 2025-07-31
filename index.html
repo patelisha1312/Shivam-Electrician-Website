@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>shivam electricians</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto Condensed', sans-serif;
+      background: #000;
+      margin: 0;
+      color: white;
+    }
+
+    .navbar {
+      position: absolute;
+      top: 31px;
+      left: 28.9px;
+      right: 28.9px;
+      height: 91px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      background-color: #000;
+      padding: 0 20px;
+    }
+
+    .logo a {
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #F56F08, #1738DA);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      padding: 8px 12px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #F56F08;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1024px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 91px;
+        right: 0;
+        background-color: #000;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .navbar {
+        flex-wrap: wrap;
+      }
+    }
+    .banner-container {
+      position: relative;
+      width: 100%;
+      max-width: 1514px;
+      height: 737px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .banner-slide {
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .banner-slide.active { display: block; }
+
+    .banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .banner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .banner-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+    }
+
+    .banner-content p {
+      font-size: 24px;
+    }
+
+    .banner-content h2 {
+      font-size: 64px;
+      font-weight: 500;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .banner-content h2 span {
+      font-size: 98px;
+      font-weight: 900;
+      background: linear-gradient(to right, #ffffff, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .explore-btn {
+      margin-top: 20px;
+      width: 200.34px;
+      height: 55px;
+      background: linear-gradient(to right, #F56F08, #1738DA);
+      color: white;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .explore-btn a
+    {
+        text-decoration: none;
+        color: #ffffff;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .arrow svg {
+      width: 24px;
+      height: 24px;
+      stroke: url(#arrow-gradient);
+    }
+
+    .arrow.left { left: 20px; }
+    .arrow.right { right: 20px; }
+
+    .dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: white;
+      cursor: pointer;
+    }
+
+    .dot.active { background: #F56F08; }
+
+    @media(max-width: 768px) {
+      .banner-content h2 { font-size: 32px; }
+      .banner-content h2 span { font-size: 50px; }
+    }
+    .section {
+  padding: 80px 64px;
+}
+
+.head {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.title1 {
+  font-size: 32px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #F56F08 40%, #1738DA 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 24px;
+  font-weight: lighter;
+  margin-top: 16px;
+}
+
+.carousel {
+  position: relative;
+  overflow: visible;
+}
+
+/* === Hide arrows initially === */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 32px;
+  font-weight: bold;
+  display: none; /* Hidden by default */
+  align-items: center;
+  justify-content: center;
+  color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, opacity 0.3s ease;
+}
+
+/* === Show on carousel hover === */
+.carousel:hover .arrow {
+  display: flex;
+}
+
+.arrow.left {
+  left: -30px;
+}
+
+.arrow.right {
+  right: -30px;
+}
+
+.cards {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 60px;
+  scroll-snap-type: x mandatory;
+}
+
+.cards::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  position: relative;
+  width: 448px;
+  flex: 0 0 auto;
+  cursor: pointer;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  background: white;
+  scroll-snap-align: center;
+}
+
+.image {
+  height: 308px;
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  position: relative;
+}
+
+.image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.icon {
+  position: absolute;
+  top: 270px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 99px;
+  height: 99px;
+  background: black;
+  border: 4px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.icon img {
+  width: 55px;
+  height: 55px;
+}
+
+.info {
+  background: white;
+  color: black;
+  height: 190px;
+  text-align: center;
+  padding-top: 64px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: relative;
+  overflow: visible;
+}
+
+.label {
+  font-size: 36px;
+  font-weight: lighter;
+}
+
+.btnbox {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -10%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.card:hover .btnbox {
+  opacity: 1;
+}
+
+.button {
+  width: 201px;
+  height: 55px;
+  margin-top: -30px;
+  font-size: 1.125rem;
+  color: white;
+  background: linear-gradient(45deg, #F56F08, #1738DA);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* === Responsive Arrow Adjustments === */
+@media (max-width: 992px) {
+  .section {
+    padding: 10px 32px;
+  }
+
+  .title1 {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+  }
+
+  .card {
+    width: 320px;
+  }
+
+  .image {
+    height: 220px;
+  }
+
+  .icon {
+    top: 190px;
+    width: 70px;
+    height: 70px;
+  }
+
+  .icon img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .info {
+    height: 160px;
+    padding-top: 50px;
+  }
+
+  .label {
+    font-size: 24px;
+  }
+
+  .button {
+    width: 160px;
+    height: 45px;
+    font-size: 1rem;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    top: 46%;
+  }
+
+  .arrow.left {
+    left: 0;
+  }
+
+  .arrow.right {
+    right: 0;
+  }
+
+  /* Optional: Keep arrows hidden permanently on touch devices */
+  .carousel:hover .arrow {
+    display: none; /* Because hover is not supported */
+  }
+}
+
+@media (max-width: 576px) {
+  .section {
+    padding: 10px 16px;
+  }
+
+  .title1 {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .card {
+    width: 280px;
+  }
+
+  .label {
+    font-size: 20px;
+  }
+
+  .button {
+    width: 140px;
+    height: 42px;
+  }
+
+  .arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 22px;
+    top: 46%;
+  }
+
+  .arrow.left {
+    left: 0;
+  }
+
+  .arrow.right {
+    right: 0;
+  }
+
+  .carousel:hover .arrow {
+    display: none;
+  }
+}
+    /* Base layout for desktop */
+.containers2 {
+  margin-top: -60px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 32px;
+  padding: 64px;
+  align-items: center;
+}
+
+.lefts2 {
+  grid-column: span 6;
+}
+
+.rights2 {
+  grid-column: span 6;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-left: 30px;
+}
+
+.title2 {
+  font-size: 32px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #F56F08, #1738DA 30%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle2 {
+  font-size: 32px;
+  color: white;
+}
+
+.desc {
+  font-size: 24px;
+  color: white;
+}
+
+.iconss2 {
+  display: flex;
+  gap: 48px;
+  padding-top: 16px;
+}
+
+.icons2 {
+  text-align: center;
+}
+
+.icons2 img {
+  width: 109px;
+  height: 109px;
+}
+
+.labels2 {
+  font-size: 32px;
+  margin-top: 8px;
+}
+
+.images2 {
+  width: 100%;
+  height: auto;
+  max-width: 682px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Tablet view (between 768px and 1024px) */
+@media (max-width: 1024px) {
+  .containers2 {
+    grid-template-columns: 1fr;
+    padding: 48px 32px;
+    gap: 40px;
+  }
+
+  .lefts2,
+  .rights2 {
+    grid-column: span 12;
+    margin: 0 auto;
+  }
+
+  .rights2 {
+    margin-left: 0;
+    gap: 32px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .title2 {
+    font-size: 28px;
+  }
+
+  .subtitle2 {
+    font-size: 28px;
+  }
+
+  .desc {
+    font-size: 20px;
+  }
+
+  .iconss2 {
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .labels2 {
+    font-size: 24px;
+  }
+
+  .icons2 img {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+/* Mobile view (below 768px) */
+@media (max-width: 767px) {
+  .containers2 {
+    grid-template-columns: 1fr;
+    padding: 32px 16px;
+    gap: 32px;
+  }
+
+  .rights2 {
+    gap: 24px;
+  }
+
+  .title2 {
+    font-size: 24px;
+  }
+
+  .subtitle2 {
+    font-size: 22px;
+  }
+
+  .desc {
+    font-size: 18px;
+  }
+
+  .iconss2 {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .labels2 {
+    font-size: 20px;
+  }
+
+  .icons2 img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+    .circlewrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 150px;
+      margin-top: 90px;
+      flex-wrap: wrap;
+    }
+
+    @keyframes popup {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.15);
+      }
+    }
+
+    .circleblock {
+      text-align: center;
+      position: relative;
+      width: 307px;
+      height: 307px;
+    }
+
+    .bigcircle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 307px;
+      height: 307px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, rgba(245,111,8,0.3), rgba(23,56,218,0.3));
+      animation: popup 2.5s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .midcircle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 253px;
+      height: 253px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, rgba(245,111,8,0.4), rgba(23,56,218,0.4));
+      animation: popup 2.5s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    .smallcircle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 199px;
+      height: 199px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, rgba(245,111,8,0.8), rgba(23,56,218,0.8));
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 3;
+    }
+
+    .iconimage1, .iconimage2 {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+    }
+
+    .iconimage1 {
+      top: 50%;
+      width: 114px;
+      height: 114px;
+    }
+
+    .iconimage2 {
+      top: 45%;
+      width: 141px;
+      height: 141px;
+    }
+
+    .circletext {
+      margin-top: 330px;
+    }
+
+    .highlight3 {
+      font-size: 48px;
+      font-weight: 700;
+      background: linear-gradient(360deg, #F56F08 10%, #1738DA 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtext3 {
+      font-size: 32px;
+      color: white;
+      line-height: 1.3;
+      font-weight: 400;
+    }
+    .container4
+    {
+        max-width: calc(100% - 128px); /* 64px left + 64px right */
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 30px;
+    }
+    .grid-column-12 {
+      grid-column: span 12;
+    }
+
+   
+    .heading4 {
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(45deg, #F56F08 40%, #1738DA 60%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 300px;
+    }
+
+    .subheading4 {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 400;
+      color: white;
+      margin-top: 20px;
+      line-height: 1.4;
+    }
+
+    .slider-wrapper4 {
+      overflow: hidden;
+      margin-top: 40px;
+    }
+
+    .slider4 {
+      display: flex;
+      gap: 32px;
+      transition: transform 1s ease-in-out;
+    }
+
+    .box4 {
+      position: relative;
+      width: 448px;
+      height: 588px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .box4 img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .overlay4 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 214.5px solid transparent;
+      border-bottom: 202px solid #F56F08;
+      transform: scaleX(-1);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .textbox14,
+    .textbox24 {
+      position: absolute;
+      margin-left: 20px;
+      background-color: black;
+      color: white;
+      font-size: 24px;
+      font-weight: 400;
+      font-family: Roboto, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .textbox14 {
+      width: 264px;
+      height: 51px;
+      bottom: 100px;
+      left: 0;
+    }
+
+    .textbox24 {
+      width: 159px;
+      height: 51px;
+      bottom: 40px;
+      left: 0;
+    }
+
+    .box4:hover .overlay4,
+    .box4:hover .textbox14,
+    .box4:hover .textbox24 {
+      opacity: 1;
+    }
+
+    .pagination4 {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .dot4 {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .dot4.active {
+      background-color: #F56F08;
+    }
+    .container6 {
+      display: grid;
+      margin-top: -15px;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 32px;
+      padding: 64px;
+    }
+
+    .form-section6 {
+      grid-column: span 6;
+      background-color: #000;
+      padding: 40px;
+      width: 680px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .form-title6 {
+      font-size: 64px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .row6 {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      width: 100%;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .input-box {
+      border-radius: 10px;
+      border: none;
+      padding: 16px;
+      font-size: 20px;
+      font-family: 'Roboto Condensed', sans-serif;
+      color: #6D6969;
+      background-color: white;
+    }
+
+    .box2956, .box2916 {
+      width: 291px;
+      height: 71px;
+    }
+
+    .input-box::placeholder,
+    textarea::placeholder {
+      color: #6D6969;
+      font-size: 20px;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-weight: 400;
+    }
+
+    select.input-box {
+      appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg fill='%236D6969' height='36' viewBox='0 0 24 24' width='36' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 20px) center;
+      background-size: 26px;
+      padding-right: 50px;
+    }
+
+    .address-box6, .message-box6 {
+      width: 606px;
+      border-radius: 10px;
+      padding: 16px;
+      font-size: 20px;
+      font-family: 'Roboto Condensed',sans-serif;
+      color: #6D6969;
+      margin-bottom: 20px;
+      resize: none;
+    }
+
+    .address-box6 { height: 115px; }
+    .message-box6 { height: 139px; }
+
+    .budget-label6 {
+      font-size: 24px;
+      color: white;
+      margin-bottom: 8px;
+      width: 100%;
+      text-align: left;
+    }
+
+    .range-wrapper6 {
+      position: relative;
+      width: 607px;
+      height: 40px;
+      margin-top: 20px;
+    }
+
+    .range-value-display6 {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      font-weight: 600;
+      color: #6D6969;
+    }
+
+    .budget-range6 {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: #6D6969;
+      appearance: none;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .budget-range6::-webkit-slider-thumb {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+      margin-top: -6px;
+      position: relative;
+      top: 3px;
+    }
+
+    .budget-range6::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+      position: relative;
+      top: -6px;
+    }
+
+    .submit-button6 {
+      width: 606px;
+      height: 67px;
+      font-size: 32px;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(55deg, #F56F08, #1738DA);
+      cursor: pointer;
+    }
+
+    #formMessage {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+
+    .info-section6 {
+      grid-column: span 6;
+      margin-top: 50px;
+      margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+      justify-content: center;
+    }
+
+    .help-label6 {
+      font-size: 24px;
+      font-weight: bold;
+      font-family: 'Roboto';
+      background: linear-gradient(to right, #F56F08, #1738DA 30%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .touch-title6 {
+      font-size: 40px;
+      font-weight: 500;
+      color: white;
+    }
+
+    .description6 {
+      font-size: 24px;
+      color: white;
+      max-width: 520px;
+    }
+
+    .info-item6 {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .info-item6 img {
+      width: 64px;
+      height: 64px;
+    }
+
+    .info-heading6 {
+      font-size: 24px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .info-text6 {
+      font-size: 24px;
+      font-weight: 400;
+      color: white;
+    }
+    @media (max-width: 1024px) {
+  .container6 {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 24px;
+    gap: 48px;
+  }
+
+  .form-section6,
+  .info-section6 {
+    width: 100%;
+    max-width: 100%;
+    padding: 24px;
+  }
+
+  .form-title6 {
+    font-size: 40px;
+  }
+
+  .row6 {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .box2956, .box2916,
+  .address-box6, .message-box6,
+  .submit-button6, .range-wrapper6 {
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  .input-box,
+  .address-box6,
+  .message-box6 {
+    font-size: 18px;
+    padding: 14px;
+  }
+
+  .budget-label6,
+  .range-value-display6 {
+    font-size: 18px;
+  }
+
+  .budget-range6 {
+    height: 6px;
+  }
+
+  .submit-button6 {
+    height: 60px;
+    font-size: 24px;
+  }
+
+  .touch-title6 {
+    font-size: 32px;
+  }
+
+  .description6,
+  .info-heading6,
+  .info-text6 {
+    font-size: 18px;
+  }
+
+  .info-item6 {
+    gap: 16px;
+  }
+
+  .info-item6 img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .range-wrapper6 {
+    height: auto;
+  }
+
+  .range-value-display6 {
+    top: -26px;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-title6 {
+    font-size: 32px;
+  }
+
+  .submit-button6 {
+    font-size: 20px;
+  }
+
+  .touch-title6 {
+    font-size: 28px;
+  }
+
+  .description6 {
+    font-size: 16px;
+  }
+
+  .info-heading6,
+  .info-text6 {
+    font-size: 16px;
+  }
+}
+    .footer {
+  width: 1514px;
+  height: 453px;
+  display: flex;
+  padding: 50px;
+  background-color: #191919;
+  box-sizing: border-box;
+  gap: 50px;
+}
+
+.footer-section.about {
+  width: 28%;
+  margin-top: 50px;
+}
+
+.footer-section.grouped {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.footer-section h2 {
+  font-size: 32px;
+  font-weight: 500;
+  background: linear-gradient(to right, #F56F08, #1738DA 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer-section p,
+.footer-section li,
+.footer-section span {
+  font-size: 20px;
+  font-weight: 400;
+  color: white;
+  margin: 10px 0;
+}
+
+.footer-section h3 {
+  font-size: 24px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.gradient-line {
+  width: 214px;
+  height: 2px;
+  background: linear-gradient(to right, #F56F08, #1738DA);
+  margin-bottom: 15px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.contact-item img {
+  width: 36px;
+  height: 36px;
+  margin-right: 10px;
+}
+
+.gallery img {
+  margin: 3px;
+}
+
+.gallery-row {
+  display: flex;
+  gap: 14px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.copyright {
+  width: 1528px;
+  height: 61px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.gradient-text {
+  background: #636161;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.copyright a {
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: normal;
+  background: #636161;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Tablet View */
+@media screen and (max-width: 1024px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    padding: 40px 30px;
+    gap: 40px;
+  }
+
+  .footer-section.about {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .footer-section.grouped {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0;
+    gap: 40px;
+  }
+
+  .footer-section {
+    width: 100%;
+  }
+
+  .footer-section h2,
+  .footer-section h3 {
+    text-align: left;
+  }
+
+  .gallery-row {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .copyright {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .copyright a {
+    margin: 0 10px;
+  }
+}
+
+/* Mobile View */
+@media screen and (max-width: 600px) {
+  .footer {
+    padding: 30px 20px;
+  }
+
+  .footer-section h2 {
+    font-size: 26px;
+  }
+
+  .footer-section h3 {
+    font-size: 20px;
+  }
+
+  .footer-section p,
+  .footer-section span {
+    font-size: 16px;
+  }
+
+  .contact-item img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .gradient-line {
+    width: 150px;
+  }
+
+  .gallery-row img {
+    width: 100px;
+    height: auto;
+  }
+
+  .copyright {
+    font-size: 14px;
+  }
+
+  .copyright a {
+    font-size: 14px;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">
+      <a href="index.html">Shivam Electricians</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a class="active" href="index.html">Home</a>
+      <a href="aboutus.html">About us</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="team.html">Team</a>
+      <a href="bookavisit.html">book a visit</a>
+    </div>
+  </div>
+  <div class="banner-container">
+  <!-- Slides -->
+  <div class="banner-slide active">
+    <img src="banner.png" class="banner-image" alt="Banner 1">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+      <p>We help you electrical services</p>
+      <h2>We build quality <span>ELECTRICIANS</span></h2>
+      <button class="explore-btn"><a href="aboutus.html">EXPLORE MORE</a></button>
+    </div>
+  </div>
+  <div class="banner-slide">
+    <img src="banner2.png" style="opacity: 50%;" class="banner-image" alt="Banner 2">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+      <p>Professional & Fast</p>
+      <h2>Trusted <span>ELECTRICIANS</span></h2>
+      <button class="explore-btn"><a href="aboutus.html">EXPLORE MORE</a></button>
+    </div>
+  </div>
+  <div class="banner-slide">
+    <img src="banner3.png" style="opacity: 50%;" class="banner-image" alt="Banner 3">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+      <p>Powering the World</p>
+      <h2>Expert <span>ELECTRICIANS</span></h2>
+      <button class="explore-btn"><a href="aboutus.html">EXPLORE MORE</a></button>
+    </div>
+  </div>
+
+  <!-- SVG Gradient Def -->
+  
+  <!-- Dots -->
+  <div class="dots">
+    <div class="dot active" onclick="currentSlide(0)"></div>
+    <div class="dot" onclick="currentSlide(1)"></div>
+    <div class="dot" onclick="currentSlide(2)"></div>
+  </div>
+</div>
+  <section class="section">
+    <div class="head">
+      <h2 class="title1">What We Offer?</h2>
+      <p class="subtitle">
+        Precision. Safety. Excellence in Every Connection.<br />
+        Trusted Electrical Services You Can Rely On.
+      </p>
+    </div>
+
+    <div class="carousel">
+      <div id="cards" class="cards"></div>
+      <button id="prev" class="arrow left">&#8592;</button>
+      <button id="next" class="arrow right">&#8594;</button>
+    </div>
+  </section>
+  <div class="containers2">
+    <!-- Left Image -->
+    <div class="lefts2">
+      <img src="who we are.png" alt="Electrician" class="images2">
+    </div>
+
+    <!-- Right Content -->
+    <div class="rights2">
+      <div class="title2">WHO WE ARE?</div>
+      <div class="subtitle2">Providing High Quality<br>Electrical Solution</div>
+      <div class="desc">
+        Our operations span the globe and encompass diverse sectors within the electrical industry.
+        With over four decades of specialized expertise in Electrical services, catering to large-scale enterprises worldwide,
+        we provide tailored end-to-end solutions crafted for you.
+      </div>
+
+      <div class="iconss2">
+        <div class="icons2">
+          <img src="resonable cost.png" alt="Reasonable Cost">
+          <div class="labels2">Reasonable Cost</div>
+        </div>
+        <div class="icons2">
+          <img src="expert.png" alt="Expert Electrician">
+          <div class="labels2">Expert Electrician</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="circlewrapper">
+    <!-- Circle Block 1 -->
+    <div class="circleblock">
+      <div class="bigcircle"></div>
+      <div class="midcircle"></div>
+      <div class="smallcircle">
+        <img src="experience 1.png" alt="Experience Icon" class="iconimage1" />
+      </div>
+      <div class="circletext">
+        <div class="highlight3">25+</div>
+        <div class="subtext3">years of<br>Experience</div>
+      </div>
+    </div>
+
+    <!-- Circle Block 2 -->
+    <div class="circleblock">
+      <div class="bigcircle"></div>
+      <div class="midcircle"></div>
+      <div class="smallcircle">
+        <img src="satisfied clients 1.png" alt="Clients Icon" class="iconimage2" />
+      </div>
+      <div class="circletext">
+        <div class="highlight3">90+</div>
+        <div class="subtext3">Satisfied<br>Clients</div>
+      </div>
+    </div>
+
+    <!-- Circle Block 3 -->
+    <div class="circleblock">
+      <div class="bigcircle"></div>
+      <div class="midcircle"></div>
+      <div class="smallcircle">
+        <img src="projects completed 1.png" alt="Projects Icon" class="iconimage2" />
+      </div>
+      <div class="circletext">
+        <div class="highlight3">11k</div>
+        <div class="subtext3">Project<br>Completed</div>
+      </div>
+    </div>
+  </div>
+  <div class="container4">
+  <div class="grid-column-12">
+      <div class="heading4">OUR WORK</div>
+      <div class="subheading4">
+        From bright homes to powerful businesses, our projects spark reliability and trust.<br />
+        Explore the work that keeps our clients connected, safe, and satisfied.
+      </div>
+
+      <div class="slider-wrapper4">
+        <div class="slider4" id="slider4">
+          <!-- Each box represents a project -->
+          <div class="box4"><img src="project1.png" alt="1"/><div class="overlay4"></div><div class="textbox14">Modern Pattern Style</div><div class="textbox24">Repair</div></div>
+          <div class="box4"><img src="project2.png" alt="2"/><div class="overlay4"></div><div class="textbox14">Elegant Setup</div><div class="textbox24">Install</div></div>
+          <div class="box4"><img src="project3.png" alt="3"/><div class="overlay4"></div><div class="textbox14">Smart Design</div><div class="textbox24">Upgrade</div></div>
+          <div class="box4"><img src="project4.png" alt="4"/><div class="overlay4"></div><div class="textbox14">New Age Look</div><div class="textbox24">Fix</div></div>
+          <div class="box4"><img src="project5.png" alt="5"/><div class="overlay4"></div><div class="textbox14">Lighting Style</div><div class="textbox24">Maintain</div></div>
+          <div class="box4"><img src="project6.png" alt="6"/><div class="overlay4"></div><div class="textbox14">Bright Build</div><div class="textbox24">Check</div></div>
+          <div class="box4"><img src="project7.png" alt="7" style="object-fit: fill;"><div class="overlay4"></div><div class="textbox14">Fixes Short Circuit</div><div class="textbox24">Repair</div></div>
+        </div>
+      </div>
+
+      <div class="pagination4">
+        <div class="dot4 active"></div>
+        <div class="dot4"></div>
+        <div class="dot4"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container6">
+    <div class="form-section6">
+      <form id="inquiryForm" onsubmit="return validateForm(event)">
+        <h1 class="form-title6">Inquiry</h1>
+
+        <div class="row6">
+          <input class="input-box box2956" type="text" placeholder="Your Name" name="name" />
+          <input class="input-box box2916" type="email" placeholder="Email Address" name="email" />
+        </div>
+
+        <div class="row6">
+          <select class="input-box box2956" name="service">
+            <option value="" disabled selected>Services</option>
+            <option>Home Services</option>
+            <option>Commercial Services</option>
+            <option>Emergency Help</option>
+            <option>New Technology</option>
+            <option>Full Contract</option>
+          </select>
+          <input class="input-box box2916" type="tel" placeholder="Enter Phone no" name="phone" />
+        </div>
+
+        <textarea class="address-box6" placeholder="Address..." name="address"></textarea>
+
+        <label class="budget-label6">Budget Range</label>
+        <div class="range-wrapper6">
+          <div class="range-value-display6" id="rangeOutput6">₹10K</div>
+          <input class="budget-range6" type="range" min="1000" max="20000" value="10000" id="budgetRange6" oninput="updateRangeValue(this)">
+        </div>
+
+        <textarea class="message-box6" placeholder="Message..." name="message"></textarea>
+
+        <button class="submit-button6" type="submit">Submit Request</button>
+        <p id="formMessage"></p>
+      </form>
+    </div>
+
+    <div class="info-section6">
+      <h3 class="help-label6"><span>NEED</span> <span class="highlight6">ANY HELP?</span></h3>
+      <h2 class="touch-title6">Get in touch with us</h2>
+      <p class="description6">For inquiries about our services in, please reach out to us for expert guidance and assistance.</p>
+
+      <div class="info-item6">
+        <img src="any question 1.png" alt="icon" />
+        <div>
+          <p class="info-heading6">Have any questions?</p>
+          <p class="info-text6">Free +91 98254 17208</p>
+        </div>
+      </div>
+
+      <div class="info-item6">
+        <img src="mail 1.png" alt="email icon" />
+        <div>
+          <p class="info-heading6">Write Email</p>
+          <p class="info-text6">cgpatel180@gmail.com</p>
+        </div>
+      </div>
+
+      <div class="info-item6">
+        <img src="location 1.png" alt="location icon" />
+        <div>
+          <p class="info-heading6">For visit</p>
+          <p class="info-text6">53,Bhagirath Society,<br>Nr. Sardarnagar, Nadiad.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <!-- About Us -->
+  <div class="footer-section about">
+    <h2>ABOUT US</h2>
+    <p>We are a team of licensed and experienced electricians dedicated to providing safe, reliable, and high-quality electrical services for residential, commercial, and industrial clients.</p>
+    <p>Work in limited cities and near by villages.</p>
+  </div>
+
+  <!-- Grouped Sections: Explore, Contact, Gallery -->
+  <div class="footer-section grouped">
+    <!-- Explore -->
+    <div class="footer-section">
+      <h3>Explore</h3>
+      <div class="gradient-line"></div>
+      <ul>
+        <li>About Us</li>
+        <li>Services</li>
+        <li>Projects</li>
+        <li>Team</li>
+        <li>Book a Visit</li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <div class="gradient-line"></div>
+      <div class="contact-item">
+        <img src="location 1.png" alt="Location" style="margin-top: 15px;">
+        <span>53,Bhagirath Society,<br>Nr. Sardarnagar, Nadiad.</span>
+      </div>
+      <div class="contact-item">
+        <img src="mail 1.png" alt="Email">
+        <span>cgpatel180@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <img src="telephone-call 3.png" alt="Phone" style="margin-top: 5px;">
+        <span>+91 98254 17208</span>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="footer-section">
+      <h3>Gallery</h3>
+      <div class="gradient-line"></div>
+      <div class="gallery">
+        <div class="gallery-row">
+          <img src="gallery1.png" width="97" height="74">
+          <img src="gallery2 .png" width="97" height="74">
+          <img src="gallery3.png" width="97" height="74">
+        </div>
+        <div class="gallery-row">
+          <img src="gallery4.png" width="331" height="87">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Copyright -->
+  <div class="copyright">
+    <div class="gradient-text">©2025 Shivam Electricians | All Rights Reserved</div>
+    <div>
+      <a href="privacypolicy.html">Privacy Policy</a>
+      <a href="termsofservice.html">Terms of Services</a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.classList.toggle('active');
+    }
+  let currentIndex = 0;
+  const slides = document.querySelectorAll('.banner-slide');
+  const dots = document.querySelectorAll('.dot');
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove('active');
+      dots[i].classList.remove('active');
+    });
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+  }
+
+  function changeSlide(n) {
+    currentIndex = (currentIndex + n + slides.length) % slides.length;
+    showSlide(currentIndex);
+  }
+
+  function currentSlide(n) {
+    currentIndex = n;
+    showSlide(currentIndex);
+  }
+
+  // Auto-slide
+  setInterval(() => changeSlide(1), 3000);
+  // Initialize first slide
+  showSlide(0);
+  const cardsContainer = document.getElementById("cards");
+  const prevBtn = document.getElementById("prev");
+  const nextBtn = document.getElementById("next");
+
+  const cardData = [
+    { title: "Home Services", bg: "home service.png", icon: "home service icon.png" },
+    { title: "Commercial Services", bg: "commercial service.png", icon: "commercial icon.png" },
+    { title: "Emergency Help", bg: "emergency service.png", icon: "eh icon.png" },
+    { title: "New Technology", bg: "new technology.png", icon: "nt icon.png" },
+    { title: "Full Contract", bg: "fc.png", icon: "contract .png" }
+  ];
+
+  const pageLinks = {
+    "Home Services": "homeservice.html",
+    "Commercial Services": "commercialservice.html",
+    "Emergency Help": "emergency help.html",
+    "New Technology": "newtechnology.html",
+    "Full Contract": "full contract.html"
+  };
+
+  function renderCards() {
+    cardData.forEach(card => {
+      const cardElement = document.createElement("div");
+      cardElement.className = "card";
+      cardElement.innerHTML = `
+        <div class="image" style="background-image: url('${card.bg}');"></div>
+        <div class="icon"><img src="${card.icon}" alt="Icon" /></div>
+        <div class="info">
+          <h3 class="label">${card.title}</h3>
+          <div class="btnbox">
+            <a class="button" href="${pageLinks[card.title]}">Read More</a>
+          </div>
+        </div>`;
+      cardsContainer.appendChild(cardElement);
+    });
+  }
+
+  renderCards();
+
+  const scrollStep = 472;
+  nextBtn.onclick = () => cardsContainer.scrollBy({ left: scrollStep, behavior: "smooth" });
+  prevBtn.onclick = () => cardsContainer.scrollBy({ left: -scrollStep, behavior: "smooth" });
+
+    const slider4 = document.getElementById("slider4");
+    const dots4 = document.querySelectorAll(".dot4");
+    const visibleSlides = 3;
+    const slideWidth = 448 + 32; // Width + gap
+    const totalSlides = document.querySelectorAll(".box4").length;
+    const totalPages = Math.ceil(totalSlides / visibleSlides);
+    let index = 0;
+    let autoSlideInterval;
+
+    function updateSlider() {
+      slider4.style.transform = `translateX(-${index * visibleSlides * slideWidth}px)`;
+      dots4.forEach(dot => dot.classList.remove("active"));
+      if (dots4[index]) dots4[index].classList.add("active");
+    }
+
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(() => {
+        index = (index + 1) % totalPages;
+        updateSlider();
+      }, 3000);
+    }
+
+    function stopAutoSlide() {
+      clearInterval(autoSlideInterval);
+    }
+
+    dots4.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        stopAutoSlide();
+        index = i;
+        updateSlider();
+        startAutoSlide();
+      });
+    });
+
+    updateSlider();
+    startAutoSlide();
+
+    (function () {
+    emailjs.init("4FGk2kYh_Fe9zKEzt"); // Replace with your actual EmailJS public key
+  })();
+
+  function updateRangeValue(slider) {
+    const min = parseInt(slider.min);
+    const max = parseInt(slider.max);
+    const val = parseInt(slider.value);
+    const percentage = ((val - min) / (max - min)) * 100;
+
+    slider.style.background = `linear-gradient(to right, #F56F08 0%, #1738DA ${percentage}%, #6D6969 ${percentage}%, #6D6969 100%)`;
+
+    const output = document.getElementById('rangeOutput6');
+    if (val < 5000) output.textContent = "0K - 1K";
+    else if (val < 10000) output.textContent = "5K - 10K";
+    else if (val < 15000) output.textContent = "10K - 15K";
+    else if (val < 20000) output.textContent = "15K - 20K";
+    else output.textContent = "25K";
+
+    const thumbWidth = 20;
+    const offset = (percentage / 100) * slider.offsetWidth - (thumbWidth / 2);
+    output.style.left = `${offset}px`;
+  }
+
+  function validateForm(event) {
+    event.preventDefault();
+
+    const name = document.querySelector('input[name="name"]').value.trim();
+    const email = document.querySelector('input[name="email"]').value.trim();
+    const phone = document.querySelector('input[name="phone"]').value.trim();
+    const service = document.querySelector('select[name="service"]').value;
+    const address = document.querySelector('textarea[name="address"]').value.trim();
+    const message = document.querySelector('textarea[name="message"]').value.trim();
+    const budget = document.getElementById("rangeOutput6").textContent; // ✅ Get budget value
+    const formMessage = document.getElementById("formMessage");
+
+    if (!name || !email || !phone || !service || !address || !message) {
+      formMessage.style.color = "red";
+      formMessage.textContent = "Please fill out all fields!";
+      return false;
+    }
+
+    const templateParams = {
+      name: name,
+      email: email,
+      phone: phone,
+      service: service,
+      address: address,
+      message: message,
+      budget: budget, // ✅ Add budget to template params
+      time: new Date().toLocaleString(), // optional
+    };
+
+    emailjs.send("service_cpun54b", "template_08w6s5t", templateParams)
+      .then(function (response) {
+        formMessage.style.color = "#00FF00";
+        formMessage.textContent = "Your request has been submitted successfully!";
+        document.getElementById("inquiryForm").reset();
+
+        const slider = document.getElementById("budgetRange6");
+        slider.value = 10000;
+        updateRangeValue(slider);
+      }, function (error) {
+        formMessage.style.color = "red";
+        formMessage.textContent = "Failed to send. Please try again.";
+        console.error("EmailJS error:", error);
+      });
+
+    return true;
+  }
+
+  window.onload = () => {
+    const slider = document.getElementById("budgetRange6");
+    updateRangeValue(slider);
+  };
+</script>
+
+</body>
+</html>
